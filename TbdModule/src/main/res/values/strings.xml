@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SmartLibraryStudyRoomManagementAndComfortSystem</string>
+    <string name="dialog_message">Do you want to exit?</string>
+    <string name="dialog_title">Smart Libray Study Room App</string>
+    <string name="no">no</string>
+    <string name="yes">yes</string>
 </resources>

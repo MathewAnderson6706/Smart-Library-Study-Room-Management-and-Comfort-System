@@ -1,6 +1,6 @@
 # Smart Library Study Room Management and Comfort System
 
-Mathew Anderson-Saavedra n01436706
+Mathew Anderson-Saavedra n01436706 Section RCA
 
 ## Git Link
 

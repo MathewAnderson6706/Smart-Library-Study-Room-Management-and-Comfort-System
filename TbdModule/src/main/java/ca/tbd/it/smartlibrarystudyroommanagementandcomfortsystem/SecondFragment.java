@@ -1,4 +1,4 @@
-//Mathew Anderson, n01436706
+// Mathew Anderson-Saavedra n01436706 Section RCA
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.os.Bundle;

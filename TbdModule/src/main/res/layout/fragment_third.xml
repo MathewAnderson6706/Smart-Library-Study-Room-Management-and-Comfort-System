@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/green"
     tools:context=".MainActivity">
 
     <TextView
@@ -14,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="112dp"
         android:layout_marginTop="68dp"
-        android:text="Fourth Thing"
+        android:text="@string/third_thing"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/blue"

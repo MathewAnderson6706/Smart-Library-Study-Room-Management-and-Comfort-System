@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="112dp"
         android:layout_marginTop="68dp"
-        android:text="First thing"
+        android:text="@string/first_thing"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/yellow"

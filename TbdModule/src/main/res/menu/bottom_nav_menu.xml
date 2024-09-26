@@ -2,19 +2,19 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/matHome"
+        android:id="@+id/tbdHome"
         android:title="test1"
         android:icon="@drawable/home"/>
     <item
-        android:id="@+id/matMathew"
+        android:id="@+id/tbdSecond"
         android:title="test2"
         android:icon="@drawable/me"/>
     <item
-        android:id="@+id/matPerson"
+        android:id="@+id/tbdThird"
         android:title="test3"
         android:icon="@drawable/person"/>
     <item
-        android:id="@+id/matSettings"
+        android:id="@+id/tbdFourth"
         android:title="test4"
         android:icon="@drawable/settings"/>
 </menu>

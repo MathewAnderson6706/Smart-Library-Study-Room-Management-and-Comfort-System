@@ -10,7 +10,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/mathewTextView"
+        android:id="@+id/tbdTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="112dp"
@@ -18,7 +18,7 @@
         android:text="First thing"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/blue"
+        android:textColor="@color/yellow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

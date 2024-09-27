@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Mathew Anderson, n01436706 -->
+<!--
+Mathew Anderson-Saavedra n01436706
+Nicole Chlea Manaoat N01565017
+Medi Muamba Nzambi N01320883
+Safah Virk N01596470
+Section RCA
+-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"

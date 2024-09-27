@@ -1,5 +1,10 @@
-// Mathew Anderson-Saavedra n01436706 Section RCA
-
+/*
+Mathew Anderson-Saavedra n01436706
+Nicole Chlea Manaoat N01565017
+Medi Muamba Nzambi N01320883
+Safah Virk N01596470
+Section RCA
+ */
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.os.Bundle;

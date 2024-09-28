@@ -2,8 +2,9 @@
 Mathew Anderson-Saavedra n01436706
 Nicole Chlea Manaoat N01565017
 Medi Muamba Nzambi N01320883
-Safah Virk N01596470
 Section RCA
+Safah Virk N01596470
+Section RCB
  */
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 

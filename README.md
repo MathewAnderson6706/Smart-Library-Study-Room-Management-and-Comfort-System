@@ -6,7 +6,7 @@
 - Medi Muamba Nzambi N01320883
 - Safah Virk N01596470
 ---
-![Library Room Monitoring](img.png) 
+![Library Room Monitoring](![img_1.png](img_1.png)) 
 
 
 

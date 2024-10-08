@@ -7,8 +7,7 @@ Section RCA
 Safah Virk N01596470
 Section RCB
 -->
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -46,5 +45,36 @@ Section RCB
         app:layout_constraintEnd_toStartOf="@+id/room1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/room3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="331dp"
+        android:clickable="false"
+        android:contentDescription="Room 3"
+        android:src="@drawable/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/room4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="331dp"
+        android:contentDescription="Room 4"
+        android:src="@drawable/green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

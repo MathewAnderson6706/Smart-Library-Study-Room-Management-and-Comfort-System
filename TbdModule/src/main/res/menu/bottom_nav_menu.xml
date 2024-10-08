@@ -4,15 +4,15 @@
     <item
         android:id="@+id/action_temperature"
         android:title="Temperature"
-        android:icon="@drawable/home"/>
+        android:icon="@drawable/temperature"/>
     <item
         android:id="@+id/action_lighting"
         android:title="Lighting"
-        android:icon="@drawable/me"/>
+        android:icon="@drawable/light"/>
     <item
         android:id="@+id/action_time"
         android:title="Time"
-        android:icon="@drawable/person"/>
+        android:icon="@drawable/time"/>
     <item
         android:id="@+id/action_idk"
         android:title="idk"

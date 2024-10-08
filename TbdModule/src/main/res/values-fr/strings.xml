@@ -21,4 +21,8 @@ Section RCB
     <string name="second_thing">Deuxième chose</string>
     <string name="third_thing">Troisième chose</string>
     <string name="fourth_thing">Quatrième chose</string>
+    <string name="feedback">Feedback</string>
+    <string name="about_us">About Us</string>
+    <string name="exit">Exit</string>
+    <string name="settings">Settings</string>
 </resources>

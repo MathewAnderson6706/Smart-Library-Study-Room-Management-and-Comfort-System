@@ -15,33 +15,46 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    BottomNavigationView bottomNavigationView;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bottomNavigationView
-                = findViewById(R.id.tbdBottomNavigationView);
 
-        bottomNavigationView
-                .setOnItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.tbdHome);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.navigation_view);
+
+
+        navigationView.setNavigationItemSelectedListener(this);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.tbdFlFragment, homeFragment)
+                .commit();
 
         // Use OnBackPressedDispatcher to handle the back press event
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                // Call your method to display the AlertDialog
-                displayAlertDialog();
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else {
+                    displayAlertDialog();
+                }
             }
         };
         // Register the callback with the dispatcher
@@ -57,34 +70,34 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
 
-        if (itemId == R.id.tbdHome) {
+        if (itemId == R.id.nav_home) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.tbdFlFragment, homeFragment)
                     .commit();
-            return true;
-        } else if (itemId == R.id.tbdThird) {
+
+        } else if (itemId == R.id.nav_third) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.tbdFlFragment, thirdFragment)
                     .commit();
-            return true;
-        } else if (itemId == R.id.tbdFourth) {
+
+        } else if (itemId == R.id.nav_fourth) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.tbdFlFragment, fourthFragment)
                     .commit();
-            return true;
+
         }
-        else if (itemId == R.id.tbdSecond) {
+        else if (itemId == R.id.nav_second) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.tbdFlFragment, secondFragment)
                     .commit();
-            return true;
-        }
 
-        return false;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 
 

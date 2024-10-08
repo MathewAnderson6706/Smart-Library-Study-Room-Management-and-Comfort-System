@@ -20,4 +20,6 @@ Section RCB
     <string name="second_thing">Second thing</string>
     <string name="third_thing">Third Thing</string>
     <string name="fourth_thing">Fourth Thing</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +37,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
-        bottomNavigationView
-                = findViewById(R.id.tbdBottomNavigationView);
+
 
         navigationView.setNavigationItemSelectedListener(this);
-        // Optionally keep BottomNavigation hidden
-        bottomNavigationView.setVisibility(View.GONE);
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -74,26 +70,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
 
-        if (itemId == R.id.tbdHome) {
+        if (itemId == R.id.nav_home) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.tbdFlFragment, homeFragment)
                     .commit();
 
-        } else if (itemId == R.id.tbdThird) {
+        } else if (itemId == R.id.nav_third) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.tbdFlFragment, thirdFragment)
                     .commit();
 
-        } else if (itemId == R.id.tbdFourth) {
+        } else if (itemId == R.id.nav_fourth) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.tbdFlFragment, fourthFragment)
                     .commit();
 
         }
-        else if (itemId == R.id.tbdSecond) {
+        else if (itemId == R.id.nav_second) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.tbdFlFragment, secondFragment)

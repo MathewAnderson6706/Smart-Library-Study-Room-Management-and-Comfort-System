@@ -15,16 +15,34 @@ Section RCB
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tbdTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="68dp"
-        android:text="@string/fourth_thing"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/blue"
+    <ImageButton
+        android:id="@+id/room1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="507dp"
+        android:clickable="false"
+        android:contentDescription="Room 1"
+        android:src="@drawable/person"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/room2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/room2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="507dp"
+        android:contentDescription="Room 2"
+        android:src="@drawable/settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/room1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

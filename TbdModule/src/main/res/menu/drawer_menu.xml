@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:title="Building A"
+        android:icon="@drawable/home"/>
+    <item
+        android:id="@+id/nav_second"
+        android:title="Building B"
+        android:icon="@drawable/home"/>
+    <item
+        android:id="@+id/nav_third"
+        android:title="Building C"
+        android:icon="@drawable/home"/>
+    <item
+        android:id="@+id/nav_fourth"
+        android:title="Building D"
+        android:icon="@drawable/home"/>
+</menu>

@@ -13,10 +13,10 @@
         android:theme="@style/Theme.SmartLibraryStudyRoomManagementAndComfortSystem"
         tools:targetApi="34">
         <activity
-            android:name=".MainActivity"
+            android:name=".TbdMainActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".TbdSplashActivity"
             android:theme="@style/SplashTheme"
             android:exported="true">
             <intent-filter>

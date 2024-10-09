@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    SettingsFragment settingsFragment = new SettingsFragment();
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -45,6 +47,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if(id == R.id.settings){
             Toast.makeText(this,"You have clicked on settings",Toast.LENGTH_SHORT).show();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.tbdFlFragment, settingsFragment)
+                    .commit();
         } else if (id == R.id.info) {
             Toast.makeText(this,"You have clicked on info",Toast.LENGTH_SHORT).show();
         } else if (id == R.id.feedback) {

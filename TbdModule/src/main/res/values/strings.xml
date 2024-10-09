@@ -30,4 +30,18 @@ Section RCB
     <string name="building_b">Building B</string>
     <string name="building_c">Building C</string>
     <string name="building_d">Building D</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="userinfo">User Information</string>
+    <string name="reply_title">Text Size</string>
+
+    <!-- Sync Preferences -->
+    <string name="landscape">Switch to landscape mode</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

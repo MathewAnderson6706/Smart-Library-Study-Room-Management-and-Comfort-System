@@ -49,7 +49,7 @@ Section RCB
     <string name="room_4c">Room 4</string>
     <string name="building_c">BUILDING C</string>
     <string name="time">TIME</string>
-    <string name="temperature">TEMPERATURE</string>
+    <string name="temperature">Temperature:</string>
     <string name="building_a2">Building A</string>
     <string name="building_b2">Building B</string>
     <string name="building_c2">Building C</string>
@@ -58,4 +58,10 @@ Section RCB
     <string name="lighting2">Lighting</string>
     <string name="time2">Time</string>
     <string name="idk2">idk</string>
+    <string name="air_quality">Air Quality:</string>
+    <string name="room_101a">Room 101A</string>
+    <string name="on_or_off">On or Off</string>
+    <string name="timer">Timer:</string>
+    <string name="how_many_people_in_the_room">How many people in the room:</string>
+    <string name="open_or_close_door">Open or Close Door:</string>
 </resources>

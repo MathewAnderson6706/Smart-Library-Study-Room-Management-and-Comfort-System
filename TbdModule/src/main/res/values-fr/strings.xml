@@ -64,4 +64,7 @@ Section RCB
     <string name="timer">Timer:</string>
     <string name="how_many_people_in_the_room">How many people in the room:</string>
     <string name="open_or_close_door">Open or Close Door:</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
 </resources>

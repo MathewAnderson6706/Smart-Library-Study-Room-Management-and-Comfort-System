@@ -18,8 +18,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -29,6 +31,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item,menu);
+        return true;
+    }
+
+    SettingsFragment settingsFragment = new SettingsFragment();
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id= item.getItemId();
+
+        if(id == R.id.settings){
+            Toast.makeText(this,"You have clicked on settings",Toast.LENGTH_SHORT).show();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.tbdFlFragment, settingsFragment)
+                    .commit();
+        } else if (id == R.id.info) {
+            Toast.makeText(this,"You have clicked on info",Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.feedback) {
+            Toast.makeText(this,"You have clicked on feedback",Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.exit) {
+            Toast.makeText(this,"You have clicked on exit",Toast.LENGTH_SHORT).show();
+        }
+        return true;
+        }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

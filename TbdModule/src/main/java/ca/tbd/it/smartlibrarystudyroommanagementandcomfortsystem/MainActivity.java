@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.tbdFlFragment, homeFragment)
+                .replace(R.id.tbdFlFragment, new LoginFragment())
                 .commit();
 
         // Use OnBackPressedDispatcher to handle the back press event

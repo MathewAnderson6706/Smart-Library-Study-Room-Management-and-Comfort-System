@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+Mathew Anderson-Saavedra n01436706
+Nicole Chlea Manaoat N01565017
+Medi Muamba Nzambi N01320883
+Section RCA
+Safah Virk N01596470
+Section RCB
+-->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".IdkFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="IDK" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/room_101a"
+        android:layout_marginTop="0dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/idk"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/how_many_people_in_the_room"
+        android:layout_marginTop="40dp"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/open_or_close_door"
+        android:layout_marginTop="60dp"/>
 
 </FrameLayout>

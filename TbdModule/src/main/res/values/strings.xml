@@ -21,27 +21,50 @@ Section RCB
     <string name="third_thing">Third Thing</string>
     <string name="fourth_thing">Fourth Thing</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="feedback">Feedback</string>
-    <string name="about_us">About Us</string>
-    <string name="exit">Exit</string>
-    <string name="settings">Settings</string>
-    <string name="building_a">Building A</string>
-    <string name="building_b">Building B</string>
-    <string name="building_c">Building C</string>
-    <string name="building_d">Building D</string>
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="userinfo">User Information</string>
-    <string name="reply_title">Text Size</string>
-
-    <!-- Sync Preferences -->
-    <string name="landscape">Switch to landscape mode</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_access_code">Enter Access Code</string>
+    <string name="ok">OK</string>
+    <string name="_1234">1234</string>
+    <string name="cancel">Cancel</string>
+    <string name="room_1d">Room 1</string>
+    <string name="room_2d">Room 2</string>
+    <string name="room_3d">Room 3</string>
+    <string name="room_4d">Room 4</string>
+    <string name="building_d">BUILDING D</string>
+    <string name="room_1a">Room 1</string>
+    <string name="room_2a">Room 2</string>
+    <string name="room_3a">Room 3</string>
+    <string name="room_4a">Room 4</string>
+    <string name="building_a">BUILDING A</string>
+    <string name="idk">IDK</string>
+    <string name="lighting">LIGHTING</string>
+    <string name="room_1b">Room 1</string>
+    <string name="room_2b">Room 2</string>
+    <string name="room_3b">Room 3</string>
+    <string name="room_4b">Room 4</string>
+    <string name="building_b">BUILDING B</string>
+    <string name="room_1c">Room 1</string>
+    <string name="room_2c">Room 2</string>
+    <string name="room_3c">Room 3</string>
+    <string name="room_4c">Room 4</string>
+    <string name="building_c">BUILDING C</string>
+    <string name="time">TIME</string>
+    <string name="temperature">Temperature:</string>
+    <string name="building_a2">Building A</string>
+    <string name="building_b2">Building B</string>
+    <string name="building_c2">Building C</string>
+    <string name="building_d2">Building D</string>
+    <string name="temperature2">Temperature</string>
+    <string name="lighting2">Lighting</string>
+    <string name="time2">Time</string>
+    <string name="idk2">idk</string>
+    <string name="air_quality">Air Quality:</string>
+    <string name="room_101a">Room 101A</string>
+    <string name="on_or_off">On or Off</string>
+    <string name="timer">Timer:</string>
+    <string name="how_many_people_in_the_room">How many people in the room:</string>
+    <string name="open_or_close_door">Open or Close Door:</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
 </resources>

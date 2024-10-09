@@ -52,24 +52,24 @@ public class HomeFragment extends Fragment {
 
     private void promptForAccessCode() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Enter Access Code");
+        builder.setTitle(R.string.enter_access_code);
 
         // Input
         final EditText input = new EditText(getActivity());
         builder.setView(input);
 
         // Buttons
-        builder.setPositiveButton("OK", (dialog, which) -> {
+        builder.setPositiveButton(R.string.ok, (dialog, which) -> {
             String code = input.getText().toString();
             // Below is the Dummy Code
-            if (code.equals("1234")) {
+            if (code.equals(getString(R.string._1234))) {
                 // Navigate to RoomSettingsFragment
                 navigateToRoomSettings();
             } else {
                 Toast.makeText(getActivity(), "Invalid code", Toast.LENGTH_SHORT).show();
             }
         });
-        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+        builder.setNegativeButton(R.string.cancel, (dialog, which) -> dialog.cancel());
 
         builder.show();
     }

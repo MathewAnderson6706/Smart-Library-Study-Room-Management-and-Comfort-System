@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+Mathew Anderson-Saavedra n01436706
+Nicole Chlea Manaoat N01565017
+Medi Muamba Nzambi N01320883
+Section RCA
+Safah Virk N01596470
+Section RCB
+-->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"

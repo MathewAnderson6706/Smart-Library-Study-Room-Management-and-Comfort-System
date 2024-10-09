@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
-        android:title="Building A"
-        android:icon="@drawable/home"/>
+        android:title="@string/building_a2"
+        android:icon="@drawable/abuilding"/>
     <item
         android:id="@+id/nav_second"
-        android:title="Building B"
-        android:icon="@drawable/home"/>
+        android:title="@string/building_b2"
+        android:icon="@drawable/bbuilding"/>
     <item
         android:id="@+id/nav_third"
-        android:title="Building C"
-        android:icon="@drawable/home"/>
+        android:title="@string/building_c2"
+        android:icon="@drawable/cbuilding"/>
     <item
         android:id="@+id/nav_fourth"
-        android:title="Building D"
-        android:icon="@drawable/home"/>
+        android:title="@string/building_d2"
+        android:icon="@drawable/dbuilding"/>
 </menu>

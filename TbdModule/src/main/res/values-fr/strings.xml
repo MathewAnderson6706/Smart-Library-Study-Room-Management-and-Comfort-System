@@ -67,4 +67,16 @@ Section RCB
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="exit">exit</string>
+    <string name="feedback">feedback</string>
+    <string name="about_us">about us</string>
+    <string name="settings">settings</string>
+    <string name="messages_header">Something</string>
+    <string name="userinfo">User Info</string>
+    <string name="reply_title">Reply Title</string>
+    <string name="sync_header">Sync Header</string>
+    <string name="landscape">landscape</string>
+    <string name="attachment_title">attachment_title</string>
+    <string name="attachment_summary_off">attachment_title</string>
+    <string name="attachment_summary_on">attachment_title</string>
 </resources>

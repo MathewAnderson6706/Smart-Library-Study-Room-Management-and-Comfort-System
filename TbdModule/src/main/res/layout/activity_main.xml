@@ -15,6 +15,8 @@ Section RCB
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
     <FrameLayout
         android:id="@+id/tbdFlFragment"
         android:layout_width="match_parent"
@@ -24,6 +26,7 @@ Section RCB
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"

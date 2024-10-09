@@ -13,10 +13,33 @@ Section RCB
     android:layout_height="match_parent"
     tools:context=".LightingFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/room_101a"
+        android:layout_marginTop="0dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lighting"
+        android:layout_marginTop="20dp"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/on_or_off"
+        android:layout_marginTop="40dp"/>
+
+    <SeekBar
+        android:id="@+id/seekbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/lighting" />
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="50"
+        android:layout_marginTop="80dp" />
+
 
 </FrameLayout>

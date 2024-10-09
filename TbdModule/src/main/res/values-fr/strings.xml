@@ -25,4 +25,8 @@ Section RCB
     <string name="about_us">About Us</string>
     <string name="exit">Exit</string>
     <string name="settings">Settings</string>
+    <string name="building_a">Building A</string>
+    <string name="building_b">Building B</string>
+    <string name="building_c">Building C</string>
+    <string name="building_d">Building D</string>
 </resources>

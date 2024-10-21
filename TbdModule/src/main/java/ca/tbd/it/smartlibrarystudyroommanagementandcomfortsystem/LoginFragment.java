@@ -30,7 +30,6 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         // Find the views
@@ -51,7 +50,7 @@ public class LoginFragment extends Fragment {
                     // Navigate to the building fragment (main screen)
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.tbdFlFragment, new HomeFragment()) // Assuming HomeFragment is the building screen
+                            .replace(R.id.tbdFlFragment, new HomeFragment())
                             .commit();
                 } else {
                     Toast.makeText(getActivity(), "Invalid login credentials", Toast.LENGTH_SHORT).show();

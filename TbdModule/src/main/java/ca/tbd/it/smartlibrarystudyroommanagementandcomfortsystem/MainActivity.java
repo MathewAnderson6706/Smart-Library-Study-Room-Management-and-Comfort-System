@@ -187,5 +187,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    public void syncDrawerToggle() {
+        // Re-sync the toggle when coming back to a fragment where the drawer is needed
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+    }
+
 
 }

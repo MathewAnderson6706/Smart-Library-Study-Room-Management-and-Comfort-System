@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -27,23 +28,35 @@ public class RoomSettingsFragment extends Fragment {
     }
 
     BottomNavigationView bottomNavigationView;
+    HomeFragment homeFragment = new HomeFragment();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_room_settings, container, false);
 
         // Set up the toolbar
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar2);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+
+        // Disable the drawer
+        DrawerLayout drawerLayout = getActivity().findViewById(R.id.drawer_layout);
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
         // Enable the back button
         if (((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
             ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back_white);
         }
 
         // Handle the back button click
-        toolbar.setNavigationOnClickListener(v -> getActivity().getSupportFragmentManager().popBackStack());
+        toolbar.setNavigationOnClickListener(v -> {
+                // Otherwise, navigate to tbdFlFragment explicitly
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.tbdFlFragment, homeFragment)
+                        .commit();
+            ((MainActivity) getActivity()).syncDrawerToggle();
+        });
 
         BottomNavigationView bottomNav = view.findViewById(R.id.roomSettingsBottomNav);
         bottomNav.setOnItemSelectedListener(item -> {
@@ -74,5 +87,14 @@ public class RoomSettingsFragment extends Fragment {
         //bottomNavigationView.setSelectedItemId(R.id.action_temperature);
 
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        // Re-enable the drawer when leaving the fragment
+        DrawerLayout drawerLayout = getActivity().findViewById(R.id.drawer_layout);
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 }

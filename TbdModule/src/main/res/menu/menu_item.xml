@@ -4,8 +4,8 @@
 
     <item
         app:showAsAction="always"
-        android:title=""
-        android:icon="@drawable/tbd_menu">
+        android:title="@string/options"
+        >
 <menu>
 
             <item

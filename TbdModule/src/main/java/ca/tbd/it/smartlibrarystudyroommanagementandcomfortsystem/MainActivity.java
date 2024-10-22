@@ -50,9 +50,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         int id= item.getItemId();
 
-        /*if (toggle.onOptionsItemSelected(item)) {
+        if (toggle.onOptionsItemSelected(item)) {
             return true;
-        }*/
+        }
 
         if(id == R.id.settings){
             Toast.makeText(this,"You have clicked on settings",Toast.LENGTH_SHORT).show();
@@ -78,14 +78,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
-        //toolbar = findViewById(R.id.toolbar2);
-        //setSupportActionBar(toolbar);
+        toolbar = findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
 
 
         //Setting up the ActionBarDrawerToggle
-        /*toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();*/
+        toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);

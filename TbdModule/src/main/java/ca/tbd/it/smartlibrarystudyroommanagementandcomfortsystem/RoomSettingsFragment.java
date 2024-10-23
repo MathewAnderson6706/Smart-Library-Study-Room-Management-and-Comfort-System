@@ -42,6 +42,8 @@ public class RoomSettingsFragment extends Fragment {
         DrawerLayout drawerLayout = getActivity().findViewById(R.id.drawer_layout);
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
+
+
         // Enable the back button
         if (((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
             ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -59,6 +61,13 @@ public class RoomSettingsFragment extends Fragment {
         });
 
         BottomNavigationView bottomNav = view.findViewById(R.id.roomSettingsBottomNav);
+
+        // Set the default fragment to TemperatureFragment
+        getChildFragmentManager()
+                .beginTransaction()
+                .replace(R.id.roomSettingsFragmentContainer, new TemperatureFragment())
+                .commit();
+
         bottomNav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             Fragment selectedFragment = null;
@@ -83,8 +92,6 @@ public class RoomSettingsFragment extends Fragment {
             return true;
         });
 
-
-        //bottomNavigationView.setSelectedItemId(R.id.action_temperature);
 
         return view;
     }

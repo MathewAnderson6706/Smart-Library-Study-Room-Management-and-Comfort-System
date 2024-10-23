@@ -9,6 +9,7 @@ Section RCB
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -90,10 +91,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.tbdFlFragment, new LoginFragment())
-                .commit();
+        // Check if we're restoring from a previous state
+        if (savedInstanceState == null) {
+            // Set the HomeFragment as the default fragment
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.tbdFlFragment, new HomeFragment())
+                    .commit();
+        }
 
         // Use OnBackPressedDispatcher to handle the back press event
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {

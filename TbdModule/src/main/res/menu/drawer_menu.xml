@@ -2,20 +2,53 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn = "navigation_view">
+
+    <group
+        android:checkableBehavior="single">
     <item
         android:id="@+id/nav_home"
         android:title="@string/building_a2"
         android:icon="@drawable/abuilding"/>
+
     <item
         android:id="@+id/nav_second"
         android:title="@string/building_b2"
         android:icon="@drawable/bbuilding"/>
+
     <item
         android:id="@+id/nav_third"
         android:title="@string/building_c2"
         android:icon="@drawable/cbuilding"/>
+
     <item
         android:id="@+id/nav_fourth"
         android:title="@string/building_d2"
         android:icon="@drawable/dbuilding"/>
+</group>
+    <group
+        android:checkableBehavior="single">
+    <item
+        android:title="Settings">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/settings_menu"
+                android:title="Settings"/>
+        </menu>
+    </item>
+    </group>
+
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:title="Logout">
+            <menu>
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/logout_menu"
+                    android:title="Logout"/>
+            </menu>
+        </item>
+    </group>
+
 </menu>

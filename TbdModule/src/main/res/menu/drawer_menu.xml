@@ -25,5 +25,17 @@
         android:title="@string/building_d2"
         android:icon="@drawable/dbuilding"/>
 </group>
+    <group
+        android:checkableBehavior="single">
+    <item
+        android:title="Settings">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/settings_menu"
+                android:title="Settings"/>
+        </menu>
+    </item>
+    </group>
 
 </menu>

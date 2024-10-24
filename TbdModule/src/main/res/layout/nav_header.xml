@@ -10,14 +10,14 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:layout_width="54dp"
-        android:layout_height="65dp"
-        android:src="@drawable/ic_launcher_playstore2" />
+        android:layout_width="64dp"
+        android:layout_height="56dp"
+        android:src="@mipmap/ic_launcher_foreground" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="NameTesting"
         android:textColor="@color/white"
         android:textStyle="bold"/>
 

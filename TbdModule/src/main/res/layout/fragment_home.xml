@@ -16,8 +16,36 @@ Section RCB
     tools:context=".MainActivity">
 
 
+    <FrameLayout
+        android:id="@+id/frame1A"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.196" >
+
+        <ImageButton
+            android:id="@+id/room1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/room_1a"
+            android:background="@color/colorPrimary"
+            android:scaleType="fitCenter"
+             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Room1" />
+    </FrameLayout>
+
     <ImageButton
-        android:id="@+id/room1"
+        android:id="@+id/room2"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="40dp"
@@ -25,27 +53,14 @@ Section RCB
         android:layout_marginEnd="98dp"
         android:layout_marginBottom="507dp"
         android:clickable="false"
-        android:contentDescription="@string/room_1a"
+        android:contentDescription="@string/room_2a"
         android:src="@drawable/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/room2"
+        app:layout_constraintStart_toEndOf="@+id/frame1A"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/room2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="107dp"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="507dp"
-        android:contentDescription="@string/room_2a"
-        android:src="@drawable/green"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/room1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageButton
         android:id="@+id/room3"

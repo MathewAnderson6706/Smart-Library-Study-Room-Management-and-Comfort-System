@@ -16,7 +16,7 @@ Section RCB
     tools:context=".MainActivity">
 
     <ImageButton
-        android:id="@+id/room1"
+        android:id="@+id/room2"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="40dp"
@@ -42,7 +42,7 @@ Section RCB
         android:contentDescription="@string/room_2c"
         android:src="@drawable/green"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/room1"
+        app:layout_constraintEnd_toStartOf="@+id/room2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -33,9 +33,9 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        ImageButton room1 = view.findViewById(R.id.room1);
+        ImageButton room1 = view.findViewById(R.id.room1a);
         room1.setEnabled(true);
-        ImageButton room2 = view.findViewById(R.id.room2);
+        ImageButton room2 = view.findViewById(R.id.room2a);
         room2.setEnabled(false);
 
         // Set click listeners for the rooms

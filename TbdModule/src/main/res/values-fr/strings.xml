@@ -82,4 +82,6 @@ Section RCB
     <string name="navigation_drawer_open">Open Drawer</string>
     <string name="navigation_drawer_close">Close Drawer</string>
     <string name="options">Options</string>
+    <string name="vacant">Vacant</string>
+    <string name="occupied">Occupied</string>
 </resources>

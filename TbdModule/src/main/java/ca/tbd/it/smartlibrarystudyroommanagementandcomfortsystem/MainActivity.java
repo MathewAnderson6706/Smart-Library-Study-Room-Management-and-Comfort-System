@@ -149,6 +149,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .replace(R.id.tbdFlFragment, secondFragment)
                     .commit();
 
+        } else if (itemId == R.id.nav_settings){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.tbdFlFragment, settingsFragment)
+                    .commit();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

@@ -10,21 +10,14 @@ package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
-import android.text.InputType;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class HomeFragment extends Fragment {
@@ -40,10 +33,10 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        ImageButton room1 = view.findViewById(R.id.room1);
-        room1.setEnabled(false);
-        ImageButton room2 = view.findViewById(R.id.room2);
-        room2.setEnabled(true);
+        ImageButton room1 = view.findViewById(R.id.room1a);
+        room1.setEnabled(true);
+        ImageButton room2 = view.findViewById(R.id.room2a);
+        room2.setEnabled(false);
 
         // Set click listeners for the rooms
         room1.setOnClickListener(v -> promptForAccessCode());

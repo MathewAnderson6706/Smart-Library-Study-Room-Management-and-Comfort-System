@@ -9,19 +9,23 @@ Section RCB
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -31,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    Toolbar toolbar;
+    ActionBarDrawerToggle toggle;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -44,6 +50,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         int id= item.getItemId();
+
+        if (toggle.onOptionsItemSelected(item)) {
+            return true;
+        }
 
         if(id == R.id.settings){
             Toast.makeText(this,"You have clicked on settings",Toast.LENGTH_SHORT).show();
@@ -69,14 +79,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
+        toolbar = findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
 
+
+        //Setting up the ActionBarDrawerToggle
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.tbdFlFragment, new LoginFragment())
-                .commit();
+        // Check if we're restoring from a previous state
+        if (savedInstanceState == null) {
+            // Set the HomeFragment as the default fragment
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.tbdFlFragment, new HomeFragment())
+                    .commit();
+        }
 
         // Use OnBackPressedDispatcher to handle the back press event
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
@@ -168,6 +190,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         dialog.show();
 
+    }
+
+    public void syncDrawerToggle() {
+        // Re-sync the toggle when coming back to a fragment where the drawer is needed
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
     }
 
 

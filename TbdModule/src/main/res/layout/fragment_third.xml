@@ -15,67 +15,155 @@ Section RCB
     android:background="@color/baige"
     tools:context=".MainActivity">
 
-    <ImageButton
-        android:id="@+id/room1"
+    <FrameLayout
+        android:id="@+id/frame1C"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="98dp"
-        android:layout_marginBottom="507dp"
-        android:clickable="false"
-        android:contentDescription="@string/room_1c"
-        android:src="@drawable/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/room2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/room2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="107dp"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="507dp"
-        android:contentDescription="@string/room_2c"
-        android:src="@drawable/green"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/room1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/room3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginBottom="331dp"
-        android:clickable="false"
-        android:contentDescription="@string/room_3c"
-        android:src="@drawable/red"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/room4"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="107dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginBottom="331dp"
-        android:contentDescription="@string/room_4c"
-        android:src="@drawable/green"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.212"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.196" >
+
+        <ImageButton
+            android:id="@+id/room1c"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/room_1c"
+            android:background="@color/colorPrimary"
+            android:scaleType="fitCenter"
+            />
+
+        <TextView
+            android:id="@+id/room1CText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RoomC201"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/room1CTextStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/occupied"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frame2C"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.823"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.196" >
+
+        <ImageButton
+            android:id="@+id/room2c"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="false"
+            android:contentDescription="@string/room_2c"
+            android:background="@color/darkGreen"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/room2CText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RoomC202"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/room2CTextStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vacant"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/frame3C"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.475">
+
+        <ImageButton
+            android:id="@+id/room3c"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="false"
+            android:contentDescription="@string/room_3c"
+            android:background="@color/darkGreen"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/room3CText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RoomC203"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/room3CTextStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vacant"
+            android:layout_gravity="center" />
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frame4C"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.823"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.475">
+
+        <ImageButton
+            android:id="@+id/room4c"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="false"
+            android:contentDescription="@string/room_4c"
+            android:background="@color/darkGreen"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/room4CText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RoomC204"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/room4CTextStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vacant"
+            android:layout_gravity="center" />
+
+
+    </FrameLayout>
 
     <TextView
         android:id="@+id/textBuildingC"

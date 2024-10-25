@@ -79,4 +79,10 @@ Section RCB
     <string name="attachment_title">attachment_title</string>
     <string name="attachment_summary_off">attachment_title</string>
     <string name="attachment_summary_on">attachment_title</string>
+    <string name="navigation_drawer_open">Open Drawer</string>
+    <string name="navigation_drawer_close">Close Drawer</string>
+    <string name="options">Options</string>
+    <string name="vacant">Vacant</string>
+    <string name="occupied">Occupied</string>
+    <string name="login_icon_desc">login_icon_desc</string>
 </resources>

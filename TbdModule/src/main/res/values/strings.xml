@@ -85,4 +85,8 @@ Section RCB
     <string name="vacant">Vacant</string>
     <string name="occupied">Occupied</string>
     <string name="login_icon_desc">login_icon_desc</string>
+    <string-array name="school_options">
+        <item>Humber North</item>
+        <item>Sheridan</item>
+    </string-array>
 </resources>

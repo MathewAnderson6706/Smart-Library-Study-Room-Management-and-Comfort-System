@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     SettingsFragment settingsFragment = new SettingsFragment();
     FeedbackFragment feedbackFragment = new FeedbackFragment();
+    UserProfileFragment userProfileFragment = new UserProfileFragment();
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -159,6 +160,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.tbdFlFragment, feedbackFragment)
+                    .commit();
+        } else if (itemId == R.id.nav_profile){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.tbdFlFragment, userProfileFragment)
                     .commit();
         }
         drawerLayout.closeDrawer(GravityCompat.START);

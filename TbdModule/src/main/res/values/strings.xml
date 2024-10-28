@@ -85,4 +85,10 @@ Section RCB
     <string name="vacant">Vacant</string>
     <string name="occupied">Occupied</string>
     <string name="login_icon_desc">login_icon_desc</string>
+    <string name="register">Register</string>
+    <string name="name">Enter your username</string>
+    <string name="email">Enter your email</string>
+    <string name="google_sign_up">Sign Up With Google</string>
+    <string name="remember_me">Remember Me</string>
+
 </resources>

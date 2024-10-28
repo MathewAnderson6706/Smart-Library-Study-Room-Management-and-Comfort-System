@@ -7,29 +7,29 @@
     android:background="@drawable/splash_background"
     android:orientation="vertical">
 
-<TextView
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="@string/register"
-android:textSize="24sp"
-android:layout_marginBottom="24dp"/>
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/register"
+    android:textSize="24sp"
+    android:layout_marginBottom="24dp"/>
 
-    <!-- Name input field -->
-<EditText
-android:id="@+id/nameInput"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:hint="@string/name"
-android:inputType="text" />
+        <!-- Name input field -->
+    <EditText
+    android:id="@+id/nameInput"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/name"
+    android:inputType="text" />
 
-    <!-- Email input field -->
-<EditText
-android:id="@+id/emailInput"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:hint="@string/email"
-android:inputType="textEmailAddress"
-android:layout_marginTop="16dp" />
+        <!-- Email input field -->
+    <EditText
+    android:id="@+id/emailInput"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/email"
+    android:inputType="textEmailAddress"
+    android:layout_marginTop="16dp" />
 
     <EditText
         android:id="@+id/passwordInput"

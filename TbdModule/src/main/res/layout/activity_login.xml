@@ -9,11 +9,11 @@
 
     <ImageView
         android:id="@+id/loginIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/login_icon"
-    android:contentDescription="@string/login_icon_desc"
-    android:layout_marginBottom="24dp" />
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/ic_launcher_playstore_edited"
+        android:contentDescription="@string/login_icon_desc"
+        android:layout_marginBottom="24dp" />
 
     <EditText
         android:id="@+id/usernameInput"
@@ -36,4 +36,10 @@
         android:layout_height="wrap_content"
         android:text="@string/login"
         android:layout_marginTop="24dp" />
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:layout_marginTop="16dp" />
 </LinearLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "932079205234",
+    "project_id": "smart-library-study-room",
+    "storage_bucket": "smart-library-study-room.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932079205234:android:c293f9cf228861dd623beb",
+        "android_client_info": {
+          "package_name": "ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzvX7qyg1Y0qAUUSApmedbgExIpT1k5ME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

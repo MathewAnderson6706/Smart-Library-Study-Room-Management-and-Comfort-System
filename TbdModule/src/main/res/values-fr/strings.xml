@@ -89,4 +89,8 @@ Section RCB
         <item>Humber North</item>
         <item>Sheridan</item>
     </string-array>
+    <string name="remember_me">Remember me?</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="no_account_sign_up">Dont have an account? Sign Up</string>
+    <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign Up</string>
 </resources>

@@ -2,53 +2,69 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp"
     android:gravity="center"
-    android:background="@drawable/splash_background"
-    android:orientation="vertical">
+    android:background="@drawable/splash_background">
 
     <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/register"
-    android:textSize="24sp"
-    android:layout_marginBottom="24dp"/>
+        android:id="@+id/signUpTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"/>
 
-        <!-- Name input field -->
     <EditText
-    android:id="@+id/nameInput"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="@string/name"
-    android:inputType="text" />
+        android:id="@+id/nameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:inputType="text"
+        android:layout_marginBottom="12dp"/>
 
-        <!-- Email input field -->
     <EditText
-    android:id="@+id/emailInput"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="@string/email"
-    android:inputType="textEmailAddress"
-    android:layout_marginTop="16dp" />
+        android:id="@+id/emailInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email Address"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="12dp"/>
 
     <EditText
         android:id="@+id/passwordInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/password"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:layout_marginTop="16dp" />
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/confirmPasswordInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:layout_marginBottom="24dp"/>
 
     <Button
         android:id="@+id/registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Account"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#4CAF50"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/loginText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/register"
-        android:layout_marginTop="24dp" />
-    <Button
-        android:id="@+id/googleSignUpButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/google_sign_up" />
+        android:text="Already have an account? Login"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:textSize="14sp"/>
 </LinearLayout>

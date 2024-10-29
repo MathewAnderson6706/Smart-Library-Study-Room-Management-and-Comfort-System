@@ -64,9 +64,7 @@ Section RCB
     <string name="timer">Timer:</string>
     <string name="how_many_people_in_the_room">How many people in the room:</string>
     <string name="open_or_close_door">Open or Close Door:</string>
-    <string name="username">Username</string>
-    <string name="password">Password</string>
-    <string name="login">Login</string>
+
     <string name="exit">exit</string>
     <string name="feedback">feedback</string>
     <string name="about_us">about us</string>
@@ -84,11 +82,12 @@ Section RCB
     <string name="options">Options</string>
     <string name="vacant">Vacant</string>
     <string name="occupied">Occupied</string>
-    <string name="login_icon_desc">login_icon_desc</string>
-    <string name="register">Register</string>
-    <string name="name">Enter your username</string>
-    <string name="email">Enter your email</string>
-    <string name="google_sign_up">Sign Up With Google</string>
-    <string name="remember_me">Remember Me</string>
+    <string name="login">Login</string>
+    <string name="username">Email</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember me?</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="no_account_sign_up">Dont have an account? Sign Up</string>
+    <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign Up</string>
 
 </resources>

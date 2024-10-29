@@ -4,34 +4,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText nameInput;
     private EditText emailInput;
-    private Button googleSignUpButton;
+    private Button registerButton;
+    private TextView loginText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);  // Make sure this references your new layout
+        setContentView(R.layout.activity_registration);
 
-        // Find the views
         nameInput = findViewById(R.id.nameInput);
         emailInput = findViewById(R.id.emailInput);
-        googleSignUpButton = findViewById(R.id.googleSignUpButton);
+        registerButton = findViewById(R.id.registerButton);
+        loginText = findViewById(R.id.loginText);
 
-        // Set click listener for the Google Sign-Up button
-        googleSignUpButton.setOnClickListener(v -> {
-            // Handle Google Sign-Up here
-            // For example, you might want to start a Google Sign-In intent
-            startGoogleSignIn();
+        loginText.setOnClickListener(v -> {
+            startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
+            finish();
         });
-    }
-
-    private void startGoogleSignIn() {
-        // Implement Google Sign-In logic here
     }
 }

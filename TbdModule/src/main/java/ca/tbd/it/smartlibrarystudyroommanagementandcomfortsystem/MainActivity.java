@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     SettingsFragment settingsFragment = new SettingsFragment();
+    FeedbackFragment feedbackFragment = new FeedbackFragment();
+    UserProfileFragment userProfileFragment = new UserProfileFragment();
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -149,6 +151,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .replace(R.id.tbdFlFragment, secondFragment)
                     .commit();
 
+        } else if (itemId == R.id.nav_settings){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.tbdFlFragment, settingsFragment)
+                    .commit();
+        } else if (itemId == R.id.nav_feedback){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.tbdFlFragment, feedbackFragment)
+                    .commit();
+        } else if (itemId == R.id.nav_profile){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.tbdFlFragment, userProfileFragment)
+                    .commit();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

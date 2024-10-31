@@ -5,6 +5,7 @@
     <item
         app:showAsAction="always"
         android:title="@string/options"
+        android:icon=""
         >
 <menu>
 

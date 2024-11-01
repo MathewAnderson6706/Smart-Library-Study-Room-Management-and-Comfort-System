@@ -10,12 +10,10 @@ package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.os.Bundle;
 
+import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceFragmentCompat;
 
-public class SettingsFragment extends PreferenceFragmentCompat {
+public class SettingsFragment extends Fragment {
 
-    @Override
-    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R.xml.root_preferences, rootKey);
-    }
+
 }

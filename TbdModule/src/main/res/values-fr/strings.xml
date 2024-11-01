@@ -75,7 +75,7 @@ Section RCB
     <string name="userinfo">User Info</string>
     <string name="reply_title">Reply Title</string>
     <string name="sync_header">Sync Header</string>
-    <string name="landscape">landscape</string>
+    <string name="landscape">Landscape</string>
     <string name="attachment_title">attachment_title</string>
     <string name="attachment_summary_off">attachment_title</string>
     <string name="attachment_summary_on">attachment_title</string>

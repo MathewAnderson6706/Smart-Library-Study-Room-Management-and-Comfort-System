@@ -12,9 +12,8 @@ Section RCB
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A2A4D8"
+    android:background="@color/white"
     tools:context=".MainActivity">
-
 
     <FrameLayout
         android:id="@+id/frame1A"
@@ -32,10 +31,10 @@ Section RCB
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:contentDescription="@string/room_1a"
+            android:contentDescription="@string/room_1b"
             android:background="@color/colorPrimary"
             android:scaleType="fitCenter"
-             />
+            />
 
         <TextView
             android:id="@+id/room1AText"
@@ -63,15 +62,15 @@ Section RCB
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.196" >
 
-    <ImageButton
-        android:id="@+id/room2a"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:clickable="false"
-        android:contentDescription="@string/room_2a"
-        android:background="@color/darkGreen"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter" />
+        <ImageButton
+            android:id="@+id/room2a"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="false"
+            android:contentDescription="@string/room_2b"
+            android:background="@color/darkGreen"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter" />
 
         <TextView
             android:id="@+id/room2AText"
@@ -106,7 +105,7 @@ Section RCB
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:clickable="false"
-            android:contentDescription="@string/room_3a"
+            android:contentDescription="@string/room_3b"
             android:background="@color/darkGreen"
             android:layout_gravity="center"
             android:scaleType="fitCenter" />
@@ -143,7 +142,7 @@ Section RCB
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:clickable="false"
-            android:contentDescription="@string/room_4a"
+            android:contentDescription="@string/room_4b"
             android:background="@color/darkGreen"
             android:layout_gravity="center"
             android:scaleType="fitCenter" />
@@ -163,6 +162,23 @@ Section RCB
             android:layout_gravity="center" />
 
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/textBuildingA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="157dp"
+        android:layout_marginBottom="668dp"
+        android:text="@string/building_a"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

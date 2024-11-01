@@ -24,11 +24,14 @@
             app:title="@string/landscape" />
 
         <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
+            app:key="sync"
+            app:title="Night Mode" />
+
+        <SwitchPreferenceCompat
+            app:key="sync"
+            app:title="Notifications" />
+
+
 
     </PreferenceCategory>
 

@@ -98,18 +98,19 @@
 
                     <ImageView
                         android:layout_width="40dp"
-                        android:id="@+id/tbd_night"
+                        android:id="@+id/tbd_notifications"
                         android:layout_height="40dp"
-                        android:src="@drawable/icons8_night_mode"
+                        android:src="@drawable/icons8_notifications"
                         android:padding="12dp" />
                     <TextView
                         android:layout_marginStart="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Night Mode"
+                        android:text="Notifications"
                         android:textColor="@color/black"
-                        android:layout_toEndOf="@+id/tbd_night"/>
+                        android:layout_toEndOf="@+id/tbd_notifications"/>
+
                     <androidx.appcompat.widget.SwitchCompat
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -119,25 +120,26 @@
                         android:theme="@style/nightModeSwitch"/>
                 </RelativeLayout>
 
-                <!-- Dark Mode/ Night Mode-->
+                <!-- Landscape Mode-->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageView
                         android:layout_width="40dp"
-                        android:id="@+id/tbd_night"
+                        android:id="@+id/tbd_notifications"
                         android:layout_height="40dp"
-                        android:src="@drawable/icons8_night_mode"
+                        android:src="@drawable/icons8_notifications"
                         android:padding="12dp" />
                     <TextView
                         android:layout_marginStart="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Night Mode"
+                        android:text="Notifications"
                         android:textColor="@color/black"
-                        android:layout_toEndOf="@+id/tbd_night"/>
+                        android:layout_toEndOf="@+id/tbd_notifications"/>
+
                     <androidx.appcompat.widget.SwitchCompat
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -145,8 +147,9 @@
                         android:layout_centerVertical="true"
                         android:switchMinWidth="50dp"
                         android:theme="@style/nightModeSwitch"/>
-
                 </RelativeLayout>
+
+
 
             </LinearLayout>
 

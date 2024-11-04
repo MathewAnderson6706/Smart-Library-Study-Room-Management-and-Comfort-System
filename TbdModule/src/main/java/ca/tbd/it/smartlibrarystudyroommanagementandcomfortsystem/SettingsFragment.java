@@ -16,7 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceFragmentCompat;
 
@@ -34,8 +36,8 @@ public class SettingsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
         
-        ImageButton tbd_call = view.findViewById(R.id.tbd_call);
-        tbd_call.setOnClickListener(new View.OnClickListener() {
+        ImageButton tbdcall = view.findViewById(R.id.tbd_call);
+        tbdcall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -43,10 +45,40 @@ public class SettingsFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        
+
+        ImageView exit = view.findViewById(R.id.settings_exit);
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomeFragment homeFragment = new HomeFragment();
+
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.tbdFlFragment,homeFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
+
+        ImageView next4 = view.findViewById(R.id.arrow_next4);
+        next4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FeedbackFragment feedbackFragment = new FeedbackFragment();
+
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.tbdFlFragment,feedbackFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
         return view;
         
     }
+
     
     
 }

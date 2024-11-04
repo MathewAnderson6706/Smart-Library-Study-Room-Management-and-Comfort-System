@@ -29,6 +29,7 @@ Section RCB
         <ImageButton
             android:id="@+id/room1a"
             android:layout_width="100dp"
+            android:src="@drawable/roombooked"
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:contentDescription="@string/room_1b"
@@ -40,6 +41,7 @@ Section RCB
             android:id="@+id/room1AText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="RoomA201"
             android:layout_gravity="center_horizontal" />
 
@@ -67,6 +69,7 @@ Section RCB
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:clickable="false"
+            android:src="@drawable/roomvacant"
             android:contentDescription="@string/room_2b"
             android:background="@color/darkGreen"
             android:layout_gravity="center"
@@ -105,6 +108,7 @@ Section RCB
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:clickable="false"
+            android:src="@drawable/roomvacant"
             android:contentDescription="@string/room_3b"
             android:background="@color/darkGreen"
             android:layout_gravity="center"
@@ -114,6 +118,7 @@ Section RCB
             android:id="@+id/room3AText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="RoomA203"
             android:layout_gravity="center_horizontal" />
 
@@ -121,6 +126,7 @@ Section RCB
             android:id="@+id/room3ATextStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="@string/vacant"
             android:layout_gravity="center" />
 
@@ -142,6 +148,7 @@ Section RCB
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:clickable="false"
+            android:src="@drawable/roomvacant"
             android:contentDescription="@string/room_4b"
             android:background="@color/darkGreen"
             android:layout_gravity="center"

@@ -94,4 +94,5 @@ Section RCB
     <string name="no_account_sign_up">Dont have an account? Sign Up</string>
     <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign Up</string>
     <string name="settings_screen">Settings</string>
+    <string name="contact_us">Contact Us</string>
 </resources>

@@ -301,14 +301,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Help"
+                        android:text="@string/contact_us"
+                        android:autoLink="phone"
+                        android:linksClickable="true"
                         android:textColor="@color/black"
                         android:layout_toEndOf="@+id/tbd_help"/>
-                    <ImageView
+                    <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/tbd_call"
                         android:src="@drawable/tbd_call"
+                        android:background="@color/teal_700"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"/>
                 </RelativeLayout>

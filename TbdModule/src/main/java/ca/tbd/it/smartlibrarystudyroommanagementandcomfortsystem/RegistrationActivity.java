@@ -15,11 +15,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText nameInput;
-    private EditText emailInput;
-    private EditText passwordInput;
-    private Button registerButton;
-    private TextView loginText;
+    EditText nameInput;
+    EditText emailInput;
+    EditText passwordInput;
+    Button registerButton;
+    TextView loginText;
     FirebaseDatabase database;
     DatabaseReference reference;
 
@@ -42,10 +42,11 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 String name = nameInput.getText().toString();
                 String email = emailInput.getText().toString();
+                String sanitizedEmail = email.replace(".", ","); // Replace '.' with ','
                 String password = passwordInput.getText().toString();
 
                 HelperClass helperClass = new HelperClass(name, email, password);
-                reference.child(email).setValue(helperClass);
+                reference.child(sanitizedEmail).setValue(helperClass);
 
                 Toast.makeText(RegistrationActivity.this, "You have registered an account!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));

@@ -68,7 +68,8 @@
                 <!-- Dark Mode/ Night Mode-->
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
                     <ImageView
                         android:layout_width="40dp"
@@ -97,7 +98,8 @@
                 <!-- Notifications-->
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
                     <ImageView
                         android:layout_width="40dp"
@@ -127,7 +129,8 @@
                 <!-- Landscape Mode-->
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
                     <ImageView
                         android:layout_width="40dp"
@@ -167,7 +170,8 @@
                     <!-- Font Size-->
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="5dp">
 
                         <ImageView
                             android:layout_width="40dp"
@@ -196,7 +200,8 @@
                     <!-- Contact Us-->
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="5dp">
 
                         <ImageView
                             android:layout_width="40dp"
@@ -225,11 +230,12 @@
                     <!-- Font Size-->
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="5dp">
 
                         <ImageView
                             android:layout_width="40dp"
-                            android:id="@+id/tbd_pref"
+                            android:id="@+id/tbd_location"
                             android:layout_height="40dp"
                             android:src="@drawable/icons8_preferences"
                             android:padding="12dp" />
@@ -238,17 +244,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="Preferences"
+                            android:text="Location "
                             android:textColor="@color/black"
-                            android:layout_toEndOf="@+id/tbd_pref"/>
+                            android:layout_toEndOf="@+id/tbd_location"/>
 
-                        <ImageView
+                        <androidx.appcompat.widget.SwitchCompat
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/arrow_next3"
-                            android:src="@drawable/icons8_arrow"
+                            android:id="@+id/tbdlocationswitch"
                             android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"/>
+                            android:layout_centerVertical="true"
+                            android:switchMinWidth="50dp"
+                            android:theme="@style/nightModeSwitch"/>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -265,7 +272,8 @@
                 <!-- Feedback-->
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
                     <ImageView
                         android:layout_width="40dp"
@@ -294,7 +302,8 @@
                 <!-- About Us-->
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
                     <ImageView
                         android:layout_width="40dp"

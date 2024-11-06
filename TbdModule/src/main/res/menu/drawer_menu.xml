@@ -41,11 +41,11 @@
                 android:title="Settings"/>
             <item
                 android:id="@+id/nav_profile"
-                android:icon="@drawable/settings_menu"
+                android:icon="@drawable/profile"
                 android:title="Profile"/>
             <item
                 android:id="@+id/nav_feedback"
-                android:icon="@drawable/settings_menu"
+                android:icon="@drawable/feedback"
                 android:title="Feedback"/>
         </menu>
     </item>

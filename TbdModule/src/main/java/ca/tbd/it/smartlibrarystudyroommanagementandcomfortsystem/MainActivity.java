@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FeedbackFragment feedbackFragment = new FeedbackFragment();
     UserProfileFragment userProfileFragment = new UserProfileFragment();
 
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -65,10 +66,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .commit();
         } else if (id == R.id.info) {
             Toast.makeText(this,"You have clicked on info",Toast.LENGTH_SHORT).show();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.tbdFlFragment, userProfileFragment)
+                    .commit();
         } else if (id == R.id.feedback) {
             Toast.makeText(this,"You have clicked on feedback",Toast.LENGTH_SHORT).show();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.tbdFlFragment, feedbackFragment)
+                    .commit();
         } else if (id == R.id.exit) {
             Toast.makeText(this,"You have clicked on exit",Toast.LENGTH_SHORT).show();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.tbdFlFragment, homeFragment)
+                    .commit();
         }
         return true;
         }

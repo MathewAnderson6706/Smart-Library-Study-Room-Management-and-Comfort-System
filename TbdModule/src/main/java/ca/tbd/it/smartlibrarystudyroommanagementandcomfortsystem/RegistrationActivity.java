@@ -38,7 +38,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 database = FirebaseDatabase.getInstance();
-                reference = database.getReference("users");
+                reference = database.getReference(getString(R.string.users));
 
                 String name = nameInput.getText().toString();
                 String email = emailInput.getText().toString();
@@ -48,7 +48,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 HelperClass helperClass = new HelperClass(name, email, password);
                 reference.child(sanitizedEmail).setValue(helperClass);
 
-                Toast.makeText(RegistrationActivity.this, "You have registered an account!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegistrationActivity.this, R.string.you_have_registered_an_account, Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
             }
         });

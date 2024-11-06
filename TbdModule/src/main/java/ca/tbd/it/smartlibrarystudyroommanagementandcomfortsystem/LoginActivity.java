@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
     public Boolean validateUsername(){
         String val = usernameInput.getText().toString();
         if (val.isEmpty()){
-            usernameInput.setError("Username cannot be empty");
+            usernameInput.setError(getString(R.string.username_cannot_be_empty));
             return false;
         } else {
             usernameInput.setError(null);
@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
     public Boolean validatePassword(){
         String val = passwordInput.getText().toString();
         if (val.isEmpty()){
-            passwordInput.setError("password cannot be empty");
+            passwordInput.setError(getString(R.string.password_cannot_be_empty));
             return false;
         } else {
             passwordInput.setError(null);

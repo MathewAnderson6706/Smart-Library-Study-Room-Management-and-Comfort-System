@@ -95,4 +95,14 @@ Section RCB
     <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign Up</string>
     <string name="settings_screen">Settings</string>
     <string name="contact_us">Contact Us</string>
+    <string name="password_cannot_be_empty">password cannot be empty</string>
+    <string name="username_cannot_be_empty">Username cannot be empty</string>
+    <string name="invalid_code">Invalid code</string>
+    <string name="you_have_clicked_on_settings">You have clicked on settings</string>
+    <string name="you_have_clicked_on_info">You have clicked on info</string>
+    <string name="you_have_clicked_on_feedback">You have clicked on feedback</string>
+    <string name="you_have_clicked_on_exit">You have clicked on exit</string>
+    <string name="users">users</string>
+    <string name="you_have_registered_an_account">You have registered an account!</string>
+    <string name="tel_1234567789">tel:1234567789</string>
 </resources>

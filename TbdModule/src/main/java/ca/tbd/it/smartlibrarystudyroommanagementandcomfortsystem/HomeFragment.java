@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment {
                 // Navigate to RoomSettingsFragment
                 navigateToRoomSettings();
             } else {
-                Toast.makeText(getActivity(), "Invalid code", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.invalid_code, Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNegativeButton(R.string.cancel, (dialog, which) -> dialog.cancel());

@@ -41,7 +41,7 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:1234567789"));
+                intent.setData(Uri.parse(getString(R.string.tel_1234567789)));
                 startActivity(intent);
             }
         });

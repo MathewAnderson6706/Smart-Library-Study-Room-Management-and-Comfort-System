@@ -59,25 +59,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         if(id == R.id.settings){
-            Toast.makeText(this,"You have clicked on settings",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.you_have_clicked_on_settings,Toast.LENGTH_SHORT).show();
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.tbdFlFragment, settingsFragment)
                     .commit();
         } else if (id == R.id.info) {
-            Toast.makeText(this,"You have clicked on info",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.you_have_clicked_on_info,Toast.LENGTH_SHORT).show();
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.tbdFlFragment, userProfileFragment)
                     .commit();
         } else if (id == R.id.feedback) {
-            Toast.makeText(this,"You have clicked on feedback",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.you_have_clicked_on_feedback,Toast.LENGTH_SHORT).show();
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.tbdFlFragment, feedbackFragment)
                     .commit();
         } else if (id == R.id.exit) {
-            Toast.makeText(this,"You have clicked on exit",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.you_have_clicked_on_exit,Toast.LENGTH_SHORT).show();
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.tbdFlFragment, homeFragment)

@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:text="App Setttings"
+                android:text="@string/app_setttings"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -81,7 +81,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Night Mode"
+                        android:text="@string/night_mode"
                         android:textColor="@color/black"
                         android:layout_toEndOf="@+id/tbd_night"/>
                     <androidx.appcompat.widget.SwitchCompat
@@ -110,7 +110,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Notifications"
+                        android:text="@string/notifications"
                         android:textColor="@color/black"
                         android:layout_toEndOf="@+id/tbd_notifications"/>
 
@@ -140,7 +140,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Landscape"
+                        android:text="@string/landscape1"
                         android:textColor="@color/black"
                         android:layout_toEndOf="@+id/tbd_landscape"/>
 
@@ -180,7 +180,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="Font Size"
+                            android:text="@string/font_size"
                             android:textColor="@color/black"
                             android:layout_toEndOf="@+id/tbd_font"/>
 
@@ -209,7 +209,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="About Us"
+                            android:text="@string/about_us1"
                             android:textColor="@color/black"
                             android:layout_toEndOf="@+id/tbd_aboutus"
                             />
@@ -238,7 +238,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="Preferences"
+                            android:text="@string/preferences"
                             android:textColor="@color/black"
                             android:layout_toEndOf="@+id/tbd_pref"/>
 
@@ -278,7 +278,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Feedback"
+                        android:text="@string/feedback1"
                         android:textColor="@color/black"
                         android:layout_toEndOf="@+id/tbd_feedback"/>
 

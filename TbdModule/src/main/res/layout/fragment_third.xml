@@ -47,7 +47,7 @@ Section RCB
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="RoomC201"
+                android:text="@string/roomc201"
                 android:layout_gravity="center_horizontal" />
 
             <TextView
@@ -84,7 +84,7 @@ Section RCB
                 android:id="@+id/room2CText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="RoomC202"
+                android:text="@string/roomc202"
                 android:layout_gravity="center_horizontal" />
 
             <TextView
@@ -124,7 +124,7 @@ Section RCB
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="RoomC203"
+                android:text="@string/roomc203"
                 android:layout_gravity="center_horizontal" />
 
             <TextView
@@ -163,7 +163,7 @@ Section RCB
                 android:id="@+id/room4CText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="RoomC204"
+                android:text="@string/roomc204"
                 android:layout_gravity="center_horizontal" />
 
             <TextView

@@ -37,7 +37,7 @@ Section RCB
             android:src="@drawable/roombooked"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:contentDescription="@string/room_1b"
+            android:contentDescription="@string/room_1a"
             android:background="@color/colorPrimary"
             android:scaleType="fitCenter"
             />
@@ -192,5 +192,5 @@ Section RCB
         app:layout_constraintTop_toTopOf="parent" />
 
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

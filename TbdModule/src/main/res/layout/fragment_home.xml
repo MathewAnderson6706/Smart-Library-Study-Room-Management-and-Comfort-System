@@ -7,13 +7,18 @@ Section RCA
 Safah Virk N01596470
 Section RCB
 -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/splash_background"
     tools:context=".MainActivity">
+  
+  <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <FrameLayout
         android:id="@+id/frame1A"
@@ -187,5 +192,5 @@ Section RCB
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

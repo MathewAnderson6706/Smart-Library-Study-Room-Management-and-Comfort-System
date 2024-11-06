@@ -78,7 +78,6 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-
         ImageView next4 = view.findViewById(R.id.arrow_next4);
         next4.setOnClickListener(new View.OnClickListener() {
             @Override

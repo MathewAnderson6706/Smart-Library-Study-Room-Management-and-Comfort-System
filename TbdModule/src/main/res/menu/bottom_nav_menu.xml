@@ -8,10 +8,14 @@
     <item
         android:id="@+id/action_lighting"
         android:title="@string/lighting2"
+        app:itemTextColor="@color/black"
+
         android:icon="@drawable/light"/>
     <item
         android:id="@+id/action_time"
         android:title="@string/time2"
+        app:itemTextColor="@color/black"
+
         android:icon="@drawable/time"/>
     <item
         android:id="@+id/action_idk"

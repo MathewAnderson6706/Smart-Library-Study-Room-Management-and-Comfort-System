@@ -6,7 +6,7 @@
     <group
         android:checkableBehavior="single">
         <item
-            android:title="Buildings">
+            android:title="@string/buildings">
             <menu>
     <item
         android:id="@+id/nav_home"
@@ -33,20 +33,20 @@
     <group
         android:checkableBehavior="single">
     <item
-        android:title="Misc">
+        android:title="@string/misc">
         <menu>
             <item
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/settings_menu"
-                android:title="Settings"/>
+                android:title="@string/settings1"/>
             <item
                 android:id="@+id/nav_profile"
                 android:icon="@drawable/profile"
-                android:title="Profile"/>
+                android:title="@string/profile"/>
             <item
                 android:id="@+id/nav_feedback"
                 android:icon="@drawable/feedback"
-                android:title="Feedback"/>
+                android:title="@string/feedback2"/>
         </menu>
     </item>
     </group>
@@ -54,12 +54,12 @@
     <group
         android:checkableBehavior="single">
         <item
-            android:title="Logout">
+            android:title="@string/logout">
             <menu>
                 <item
                     android:id="@+id/nav_logout"
                     android:icon="@drawable/logout_menu"
-                    android:title="Logout"/>
+                    android:title="@string/logout1"/>
             </menu>
         </item>
     </group>

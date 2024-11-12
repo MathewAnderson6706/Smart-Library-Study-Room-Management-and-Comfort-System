@@ -7,13 +7,18 @@ Section RCA
 Safah Virk N01596470
 Section RCB
 -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/splash_background"
     tools:context=".MainActivity">
+  
+  <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <FrameLayout
         android:id="@+id/frame1A"
@@ -32,7 +37,7 @@ Section RCB
             android:src="@drawable/roombooked"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:contentDescription="@string/room_1b"
+            android:contentDescription="@string/room_1a"
             android:background="@color/colorPrimary"
             android:scaleType="fitCenter"
             />
@@ -42,7 +47,7 @@ Section RCB
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="RoomA201"
+            android:text="@string/rooma201"
             android:layout_gravity="center_horizontal" />
 
         <TextView
@@ -79,7 +84,7 @@ Section RCB
             android:id="@+id/room2AText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RoomA202"
+            android:text="@string/rooma202"
             android:layout_gravity="center_horizontal" />
 
         <TextView
@@ -119,7 +124,7 @@ Section RCB
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="RoomA203"
+            android:text="@string/rooma203"
             android:layout_gravity="center_horizontal" />
 
 
@@ -159,7 +164,7 @@ Section RCB
             android:id="@+id/room4AText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RoomA204"
+            android:text="@string/rooma204"
             android:layout_gravity="center_horizontal" />
 
         <TextView
@@ -188,5 +193,5 @@ Section RCB
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

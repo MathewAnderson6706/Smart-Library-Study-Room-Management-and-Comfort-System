@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:text="@string/app_setttings"
+                android:text="App Setttings"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -68,7 +68,8 @@
                 <!-- Dark Mode/ Night Mode-->
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
                     <ImageView
                         android:layout_width="40dp"
@@ -81,7 +82,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="@string/night_mode"
+                        android:text="Night Mode"
                         android:textColor="@color/black"
                         android:layout_toEndOf="@+id/tbd_night"/>
                     <androidx.appcompat.widget.SwitchCompat
@@ -97,7 +98,8 @@
                 <!-- Notifications-->
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
                     <ImageView
                         android:layout_width="40dp"
@@ -110,7 +112,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="@string/notifications"
+                        android:text="Notifications"
                         android:textColor="@color/black"
                         android:layout_toEndOf="@+id/tbd_notifications"/>
 
@@ -127,7 +129,8 @@
                 <!-- Landscape Mode-->
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
                     <ImageView
                         android:layout_width="40dp"
@@ -140,7 +143,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="@string/landscape1"
+                        android:text="Landscape"
                         android:textColor="@color/black"
                         android:layout_toEndOf="@+id/tbd_landscape"/>
 
@@ -167,7 +170,8 @@
                     <!-- Font Size-->
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="5dp">
 
                         <ImageView
                             android:layout_width="40dp"
@@ -180,7 +184,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="@string/font_size"
+                            android:text="Font Size"
                             android:textColor="@color/black"
                             android:layout_toEndOf="@+id/tbd_font"/>
 
@@ -196,7 +200,8 @@
                     <!-- Contact Us-->
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="5dp">
 
                         <ImageView
                             android:layout_width="40dp"
@@ -209,7 +214,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="@string/about_us1"
+                            android:text="About Us"
                             android:textColor="@color/black"
                             android:layout_toEndOf="@+id/tbd_aboutus"
                             />
@@ -225,11 +230,12 @@
                     <!-- Font Size-->
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="5dp">
 
                         <ImageView
                             android:layout_width="40dp"
-                            android:id="@+id/tbd_pref"
+                            android:id="@+id/tbd_location"
                             android:layout_height="40dp"
                             android:src="@drawable/icons8_preferences"
                             android:padding="12dp" />
@@ -238,17 +244,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="@string/preferences"
+                            android:text="Location "
                             android:textColor="@color/black"
-                            android:layout_toEndOf="@+id/tbd_pref"/>
+                            android:layout_toEndOf="@+id/tbd_location"/>
 
-                        <ImageView
+                        <androidx.appcompat.widget.SwitchCompat
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/arrow_next3"
-                            android:src="@drawable/icons8_arrow"
+                            android:id="@+id/tbdlocationswitch"
                             android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"/>
+                            android:layout_centerVertical="true"
+                            android:switchMinWidth="50dp"
+                            android:theme="@style/nightModeSwitch"/>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -265,7 +272,8 @@
                 <!-- Feedback-->
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
                     <ImageView
                         android:layout_width="40dp"
@@ -278,7 +286,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="@string/feedback1"
+                        android:text="Feedback"
                         android:textColor="@color/black"
                         android:layout_toEndOf="@+id/tbd_feedback"/>
 
@@ -294,7 +302,8 @@
                 <!-- About Us-->
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
                     <ImageView
                         android:layout_width="40dp"
@@ -328,4 +337,3 @@
 </ScrollView>
 
         </LinearLayout>
-

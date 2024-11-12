@@ -8,9 +8,11 @@ Section RCB
  */
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.content.pm.PackageManager;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -184,6 +188,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+
+    // Handle the permission result for all fragments in this activity
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        // Check if the request code matches the location permission request
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Location permission granted", Toast.LENGTH_SHORT).show();
+                // Handle what happens when permission is granted
+            } else {
+                Toast.makeText(this, "Location permission denied", Toast.LENGTH_SHORT).show();
+                // Handle what happens when permission is denied
+            }
+        }
+    }
 
     public void displayAlertDialog(){
 

@@ -11,6 +11,7 @@ package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -65,6 +66,8 @@ public class HomeFragment extends Fragment {
                     roomButton.setEnabled(isOccupied);
 
                     if (isOccupied) {
+                        roomButton.setImageResource(R.drawable.roombooked);
+                        roomButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorPrimary));
                         roomButton.setOnClickListener(v -> promptForAccessCode(roomId));
                     }
                 } else {

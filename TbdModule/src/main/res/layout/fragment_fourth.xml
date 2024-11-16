@@ -47,7 +47,7 @@ Section RCB
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="RoomD201"
+                android:text="@string/roomd201"
                 android:layout_gravity="center_horizontal" />
 
             <TextView

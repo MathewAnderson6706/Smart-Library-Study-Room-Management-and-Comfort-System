@@ -49,7 +49,7 @@ public class SettingsFragment extends Fragment {
             if (isChecked) {
                 checkLocationPermission();
             } else {
-                Toast.makeText(getActivity(), "Location tracking disabled", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.location_tracking_disabled, Toast.LENGTH_SHORT).show();
             }
         });
 

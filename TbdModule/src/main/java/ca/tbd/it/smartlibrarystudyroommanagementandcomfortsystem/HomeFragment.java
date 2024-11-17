@@ -41,14 +41,18 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("buildingA");
+        databaseReference = FirebaseDatabase.getInstance().getReference("roooms");
 
         ImageButton room1a = view.findViewById(R.id.room1a);
         ImageButton room2a = view.findViewById(R.id.room2a);
+        ImageButton room3a = view.findViewById(R.id.room3a);
+        ImageButton room4a = view.findViewById(R.id.room4a);
 
         // Set up rooms
         setupRoom(room1a, "room1a");
         setupRoom(room2a, "room2a");
+        setupRoom(room3a, "room3a");
+        setupRoom(room4a, "room4a");
 
         return view;
     }

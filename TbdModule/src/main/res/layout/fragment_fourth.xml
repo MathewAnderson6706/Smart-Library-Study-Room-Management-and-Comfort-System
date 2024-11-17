@@ -34,11 +34,11 @@ Section RCB
             <ImageButton
                 android:id="@+id/room1d"
                 android:layout_width="100dp"
-                android:src="@drawable/roombooked"
+                android:src="@drawable/roomvacant"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:contentDescription="@string/room_1d"
-                android:background="@color/colorPrimary"
+                android:background="@color/darkGreen"
                 android:scaleType="fitCenter"
                 />
 

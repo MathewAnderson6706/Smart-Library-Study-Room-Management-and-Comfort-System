@@ -34,11 +34,11 @@ Section RCB
         <ImageButton
             android:id="@+id/room1a"
             android:layout_width="100dp"
-            android:src="@drawable/roombooked"
+            android:src="@drawable/roomvacant"
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:contentDescription="@string/room_1a"
-            android:background="@color/colorPrimary"
+            android:background="@color/darkGreen"
             android:scaleType="fitCenter"
             />
 
@@ -50,12 +50,6 @@ Section RCB
             android:text="@string/rooma201"
             android:layout_gravity="center_horizontal" />
 
-        <TextView
-            android:id="@+id/room1ATextStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/occupied"
-            android:layout_gravity="center" />
     </FrameLayout>
 
     <FrameLayout
@@ -79,20 +73,6 @@ Section RCB
             android:background="@color/darkGreen"
             android:layout_gravity="center"
             android:scaleType="fitCenter" />
-
-        <TextView
-            android:id="@+id/room2AText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/rooma202"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:id="@+id/room2ATextStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/vacant"
-            android:layout_gravity="center" />
 
     </FrameLayout>
 
@@ -127,15 +107,6 @@ Section RCB
             android:text="@string/rooma203"
             android:layout_gravity="center_horizontal" />
 
-
-        <TextView
-            android:id="@+id/room3ATextStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="@string/vacant"
-            android:layout_gravity="center" />
-
     </FrameLayout>
 
     <FrameLayout
@@ -166,13 +137,6 @@ Section RCB
             android:layout_height="wrap_content"
             android:text="@string/rooma204"
             android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:id="@+id/room4ATextStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/vacant"
-            android:layout_gravity="center" />
 
     </FrameLayout>
 

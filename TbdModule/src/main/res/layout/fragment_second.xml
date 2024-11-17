@@ -49,13 +49,6 @@ Section RCB
                 android:textStyle="bold"
                 android:text="@string/roomb201"
                 android:layout_gravity="center_horizontal" />
-
-            <TextView
-                android:id="@+id/room1BTextStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/occupied"
-                android:layout_gravity="center" />
         </FrameLayout>
 
         <FrameLayout
@@ -86,13 +79,6 @@ Section RCB
                 android:layout_height="wrap_content"
                 android:text="@string/roomb202"
                 android:layout_gravity="center_horizontal" />
-
-            <TextView
-                android:id="@+id/room2BTextStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/vacant"
-                android:layout_gravity="center" />
 
         </FrameLayout>
 
@@ -127,14 +113,6 @@ Section RCB
                 android:text="@string/roomb203"
                 android:layout_gravity="center_horizontal" />
 
-            <TextView
-                android:id="@+id/room3BTextStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="@string/vacant"
-                android:layout_gravity="center" />
-
         </FrameLayout>
 
         <FrameLayout
@@ -165,13 +143,6 @@ Section RCB
                 android:layout_height="wrap_content"
                 android:text="@string/roomb204"
                 android:layout_gravity="center_horizontal" />
-
-            <TextView
-                android:id="@+id/room4BTextStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/vacant"
-                android:layout_gravity="center" />
 
         </FrameLayout>
 

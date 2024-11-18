@@ -17,4 +17,7 @@
     <color name="baige">#EFCE7B</color>
     <color name="pink">#FF00B8</color>
     <color name="darkGreen">#05710A</color>
+    <color name="dark_background">#333333</color> <!-- Dark gray background -->
+
+
 </resources>

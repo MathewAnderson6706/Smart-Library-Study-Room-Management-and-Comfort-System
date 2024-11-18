@@ -45,12 +45,10 @@ public class LoginActivity extends AppCompatActivity {
         signUpText = findViewById(R.id.signUpButton);
         rememberMeCheckBox = findViewById(R.id.rememberMeCheckbox);
 
-        // Check if user information is saved
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         boolean isRemembered = prefs.getBoolean(KEY_REMEMBER_ME, false);
 
         if (isRemembered) {
-            // Pre-fill username and password if "Remember Me" was checked
             String savedUsername = prefs.getString(KEY_USERNAME, "");
             String savedPassword = prefs.getString(KEY_PASSWORD, "");
             usernameInput.setText(savedUsername);
@@ -135,7 +133,6 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // Method to save user data if "Remember Me" is checked
     private void saveUserInfo(String username, String password) {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -145,7 +142,6 @@ public class LoginActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    // Method to clear saved user data
     private void clearUserInfo() {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();

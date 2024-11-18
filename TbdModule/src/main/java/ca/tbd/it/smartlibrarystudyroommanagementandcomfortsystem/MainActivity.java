@@ -1,10 +1,3 @@
-/*
-Mathew Anderson-Saavedra n01436706
-Medi Muamba Nzambi N01320883
-Section RCA
-Safah Virk N01596470
-Section RCB
- */
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.content.DialogInterface;
@@ -176,9 +169,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void logoutUser() {
         SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.remove("remember_me");
-        editor.remove("username");
-        editor.remove("password");
+
+        boolean isRemembered = prefs.getBoolean("remember_me", false);
+        if (!isRemembered) {
+            editor.remove("remember_me");
+            editor.remove("username");
+            editor.remove("password");
+        }
+
         editor.apply();
 
         Toast.makeText(MainActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
@@ -187,6 +185,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent);
         finish();
     }
+
 
     public void displayAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

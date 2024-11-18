@@ -1,9 +1,11 @@
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,7 +17,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
@@ -26,6 +27,12 @@ public class LoginActivity extends AppCompatActivity {
     EditText passwordInput;
     Button loginButton;
     TextView signUpText;
+    CheckBox rememberMeCheckBox;
+
+    private static final String PREFS_NAME = "UserPrefs";
+    private static final String KEY_USERNAME = "username";
+    private static final String KEY_PASSWORD = "password";
+    private static final String KEY_REMEMBER_ME = "remember_me";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +43,26 @@ public class LoginActivity extends AppCompatActivity {
         passwordInput = findViewById(R.id.passwordInput);
         loginButton = findViewById(R.id.loginButton);
         signUpText = findViewById(R.id.signUpButton);
+        rememberMeCheckBox = findViewById(R.id.rememberMeCheckbox);
+
+        // Check if user information is saved
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        boolean isRemembered = prefs.getBoolean(KEY_REMEMBER_ME, false);
+
+        if (isRemembered) {
+            // Pre-fill username and password if "Remember Me" was checked
+            String savedUsername = prefs.getString(KEY_USERNAME, "");
+            String savedPassword = prefs.getString(KEY_PASSWORD, "");
+            usernameInput.setText(savedUsername);
+            passwordInput.setText(savedPassword);
+            rememberMeCheckBox.setChecked(true);
+        }
 
         loginButton.setOnClickListener(v -> {
-
-            if(!validateUsername() | !validatePassword()){
-
-            } else {
-                checkUser();
-
+            if (!validateUsername() || !validatePassword()) {
+                return;
             }
+            checkUser();
         });
 
         signUpText.setOnClickListener(v -> {
@@ -52,9 +70,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public Boolean validateUsername(){
+    public Boolean validateUsername() {
         String val = usernameInput.getText().toString();
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             usernameInput.setError(getString(R.string.username_cannot_be_empty));
             return false;
         } else {
@@ -63,9 +81,9 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public Boolean validatePassword(){
+    public Boolean validatePassword() {
         String val = passwordInput.getText().toString();
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             passwordInput.setError(getString(R.string.password_cannot_be_empty));
             return false;
         } else {
@@ -74,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public void checkUser(){
+    public void checkUser() {
         String userUsername = usernameInput.getText().toString().trim();
         String sanitizedUsername = userUsername.replace(".", ",");
         String userPassword = passwordInput.getText().toString().trim();
@@ -91,6 +109,14 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (Objects.equals(passwordFromDB, userPassword)) {
                         usernameInput.setError(null);
+
+                        // Save user info if "Remember Me" is checked
+                        if (rememberMeCheckBox.isChecked()) {
+                            saveUserInfo(userUsername, userPassword);
+                        } else {
+                            clearUserInfo();
+                        }
+
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
                     } else {
@@ -105,8 +131,27 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
+    }
+
+    // Method to save user data if "Remember Me" is checked
+    private void saveUserInfo(String username, String password) {
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(KEY_USERNAME, username);
+        editor.putString(KEY_PASSWORD, password);
+        editor.putBoolean(KEY_REMEMBER_ME, true);
+        editor.apply();
+    }
+
+    // Method to clear saved user data
+    private void clearUserInfo() {
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.remove(KEY_USERNAME);
+        editor.remove(KEY_PASSWORD);
+        editor.remove(KEY_REMEMBER_ME);
+        editor.apply();
     }
 }

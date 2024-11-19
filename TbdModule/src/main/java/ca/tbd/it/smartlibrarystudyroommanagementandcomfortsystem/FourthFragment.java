@@ -61,12 +61,17 @@ public class FourthFragment extends Fragment {
 
     private void setupRoom(ImageButton roomButton, String roomId) {
         RoomUtils.setupRoom(requireContext(), roomButton, roomId, databaseReference, selectedRoomId ->
-                AccessCodeUtils.promptForAccessCode(requireContext(), selectedRoomId, databaseReference, this::navigateToRoomSettings)
+                AccessCodeUtils.promptForAccessCode(requireContext(), selectedRoomId, databaseReference, () -> navigateToRoomSettings(selectedRoomId))
         );
     }
 
-    private void navigateToRoomSettings() {
+    private void navigateToRoomSettings(String roomId) {
         RoomSettingsFragment roomSettingsFragment = new RoomSettingsFragment();
+
+        // Pass the room ID to the fragment
+        Bundle args = new Bundle();
+        args.putString("roomId", roomId);
+        roomSettingsFragment.setArguments(args);
 
         getActivity().getSupportFragmentManager()
                 .beginTransaction()

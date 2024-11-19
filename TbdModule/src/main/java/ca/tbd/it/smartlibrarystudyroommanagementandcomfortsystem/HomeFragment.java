@@ -8,24 +8,17 @@ Section RCB
  */
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
-import android.app.AlertDialog;
+
 import android.os.Bundle;
 
-
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
 
 
 public class HomeFragment extends Fragment {
@@ -61,12 +54,17 @@ public class HomeFragment extends Fragment {
 
     private void setupRoom(ImageButton roomButton, String roomId) {
         RoomUtils.setupRoom(requireContext(), roomButton, roomId, databaseReference, selectedRoomId ->
-                AccessCodeUtils.promptForAccessCode(requireContext(), selectedRoomId, databaseReference, this::navigateToRoomSettings)
+                AccessCodeUtils.promptForAccessCode(requireContext(), selectedRoomId, databaseReference, () -> navigateToRoomSettings(selectedRoomId))
         );
     }
 
-    private void navigateToRoomSettings() {
+    private void navigateToRoomSettings(String roomId) {
         RoomSettingsFragment roomSettingsFragment = new RoomSettingsFragment();
+
+        // Pass the room ID to the fragment
+        Bundle args = new Bundle();
+        args.putString("roomId", roomId);
+        roomSettingsFragment.setArguments(args);
 
         getActivity().getSupportFragmentManager()
                 .beginTransaction()

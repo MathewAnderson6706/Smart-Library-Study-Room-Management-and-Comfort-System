@@ -18,21 +18,43 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+//import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class RoomSettingsFragment extends Fragment {
+
+    private DatabaseReference databaseReference;
+    private String roomId;
 
     public RoomSettingsFragment() {
         // Required empty public constructor
     }
 
-    BottomNavigationView bottomNavigationView;
+    //BottomNavigationView bottomNavigationView;
     HomeFragment homeFragment = new HomeFragment();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_room_settings, container, false);
+
+        TextView roomNameTextView = view.findViewById(R.id.lightingText);
+
+        // Retrieve the room ID from the arguments
+        if (getArguments() != null) {
+            roomId = getArguments().getString("roomId");
+        }
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("roooms");
+
+        // Fetch room data
+        fetchRoomData(roomNameTextView);
 
         // Set up the toolbar
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar2);
@@ -60,40 +82,35 @@ public class RoomSettingsFragment extends Fragment {
             ((MainActivity) getActivity()).syncDrawerToggle();
         });
 
-        /*BottomNavigationView bottomNav = view.findViewById(R.id.roomSettingsBottomNav);
-
-        // Set the default fragment to TemperatureFragment
-        getChildFragmentManager()
-                .beginTransaction()
-                .replace(R.id.roomSettingsFragmentContainer, new TemperatureFragment())
-                .commit();
-
-        bottomNav.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
-            Fragment selectedFragment = null;
-
-            if (id == R.id.action_temperature) {
-                selectedFragment = new TemperatureFragment();
-            } else if (id == R.id.action_lighting) {
-                selectedFragment = new LightingFragment();
-            } else if (id == R.id.action_time) {
-                selectedFragment = new TimeFragment();
-            } else if (id == R.id.action_idk) {
-                selectedFragment = new IdkFragment();
-            }
-
-            if (selectedFragment != null) {
-                getChildFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.roomSettingsFragmentContainer, selectedFragment)
-                        .commit();
-            }
-
-            return true;
-        });*/
 
 
         return view;
+    }
+
+    private void fetchRoomData(TextView roomNameTextView) {
+        if (roomId != null) {
+            databaseReference.child(roomId).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        String roomName = snapshot.child("name").getValue(String.class);
+                        //String temperature = snapshot.child("temperature").getValue(String.class);
+
+                        roomNameTextView.setText(roomName != null ? roomName : "Room Name Not Found");
+                        //temperatureTextView.setText(temperature != null ? temperature + "°C" : "Temperature Not Found");
+                    } else {
+                        roomNameTextView.setText("Room Not Found");
+                        //temperatureTextView.setText("N/A");
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    roomNameTextView.setText("Error loading data");
+                    //temperatureTextView.setText("Error");
+                }
+            });
+        }
     }
 
     @Override

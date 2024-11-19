@@ -2,100 +2,83 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/activity_profile"
     android:layout_height="match_parent"
+    android:id="@+id/activity_profile"
     tools:context=".UserProfileFragment"
-    android:background="@drawable/splash_background"
-    >
+    android:background="@drawable/splash_background">
 
+    <RelativeLayout
+        android:id="@+id/linear_account"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-
-
-        <RelativeLayout
-            android:id="@+id/linear_account"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/profile_details"
+                android:textStyle="bold" />
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <LinearLayout
+                <EditText
+                    android:id="@+id/editTextName"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:hint="@string/your_name1"
+                    android:imeOptions="actionNext" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/profile_details"
-                        android:textStyle="bold" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="@color/colorPrimary">
+                <EditText
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email_address1"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/your_name1"
-                            android:imeOptions="actionNext"
-                            android:textColorHint="@color/colorPrimary" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                <EditText
+                    android:id="@+id/editTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password2"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="@color/colorPrimary">
+            <Spinner
+                android:id="@+id/school_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:spinnerMode="dropdown"
+                android:entries="@array/school_options" />
 
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/email_address1"
-                            android:imeOptions="actionNext"
-                            android:inputType="textEmailAddress"
-                            android:textColorHint="@color/colorPrimary" />
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:layout_gravity="center_horizontal" />
 
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="@color/colorPrimary">
-
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/password2"
-                            android:imeOptions="actionNext"
-                            android:inputType="textPassword"
-                            android:textColorHint="@color/colorPrimary" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <Spinner
-                        android:id="@+id/school_spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:spinnerMode="dropdown"
-                        android:entries="@array/school_options" />
-
-                    <Button
-                        android:id="@+id/saveButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/save"
-                        android:layout_gravity="center_horizontal" />
-
-
-                </LinearLayout>
-
-        </RelativeLayout>
-
+        </LinearLayout>
+    </RelativeLayout>
 </FrameLayout>

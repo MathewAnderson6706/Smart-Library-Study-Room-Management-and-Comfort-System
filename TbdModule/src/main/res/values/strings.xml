@@ -169,4 +169,14 @@ Section RCB
     <string name="about_us2">About Us</string>
     <string name="location">Location</string>
     <string name="feedback3">Feedback</string>
+    <string name="users1">users</string>
+    <string name="user_does_not_exist">User does not exist</string>
+    <string name="remember_me2">remember_me</string>
+    <string name="username1">username</string>
+    <string name="password1">password</string>
+    <string name="logged_out_successfully">Logged out successfully</string>
+    <string name="userprefs">UserPrefs</string>
+    <string name="remember_me3">remember_me</string>
+    <string name="location_permission_granted">Location permission granted</string>
+    <string name="location_permission_denied">Location permission denied</string>
 </resources>

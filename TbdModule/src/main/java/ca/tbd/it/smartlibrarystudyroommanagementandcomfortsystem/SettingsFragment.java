@@ -53,7 +53,6 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-
         /*ImageButton tbdcall = view.findViewById(R.id.tbd_call);
         tbdcall.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +62,7 @@ public class SettingsFragment extends Fragment {
                 startActivity(intent);
             }
         });*/
+
 
         ImageView exit = view.findViewById(R.id.settings_exit);
         exit.setOnClickListener(new View.OnClickListener() {

@@ -167,19 +167,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void logoutUser() {
-        SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences(getString(R.string.userprefs), MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
-        boolean isRemembered = prefs.getBoolean("remember_me", false);
+        boolean isRemembered = prefs.getBoolean(getString(R.string.remember_me3), false);
         if (!isRemembered) {
-            editor.remove("remember_me");
-            editor.remove("username");
-            editor.remove("password");
+            editor.remove(getString(R.string.remember_me2));
+            editor.remove(getString(R.string.username1));
+            editor.remove(getString(R.string.password1));
         }
 
         editor.apply();
 
-        Toast.makeText(MainActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, R.string.logged_out_successfully, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
@@ -224,9 +224,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Location permission granted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.location_permission_granted, Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Location permission denied", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.location_permission_denied, Toast.LENGTH_SHORT).show();
             }
         }
     }

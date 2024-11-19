@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         String sanitizedUsername = userUsername.replace(".", ",");
         String userPassword = passwordInput.getText().toString().trim();
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference(getString(R.string.users1));
         DatabaseReference userRef = reference.child(sanitizedUsername);
 
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -122,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
                         passwordInput.requestFocus();
                     }
                 } else {
-                    usernameInput.setError("User does not exist");
+                    usernameInput.setError(getString(R.string.user_does_not_exist));
                     usernameInput.requestFocus();
                 }
             }

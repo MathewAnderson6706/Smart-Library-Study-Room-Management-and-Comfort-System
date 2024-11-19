@@ -60,7 +60,7 @@ public class RoomSettingsFragment extends Fragment {
             ((MainActivity) getActivity()).syncDrawerToggle();
         });
 
-        BottomNavigationView bottomNav = view.findViewById(R.id.roomSettingsBottomNav);
+        /*BottomNavigationView bottomNav = view.findViewById(R.id.roomSettingsBottomNav);
 
         // Set the default fragment to TemperatureFragment
         getChildFragmentManager()
@@ -90,7 +90,7 @@ public class RoomSettingsFragment extends Fragment {
             }
 
             return true;
-        });
+        });*/
 
 
         return view;

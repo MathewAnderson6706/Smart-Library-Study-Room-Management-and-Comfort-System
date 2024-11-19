@@ -1,8 +1,10 @@
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
+
 import android.os.Bundle;
 import android.content.pm.PackageManager;
 
@@ -13,7 +15,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
 import androidx.appcompat.widget.Toolbar;
+
 
 import android.view.Menu;
 import android.view.MenuItem;

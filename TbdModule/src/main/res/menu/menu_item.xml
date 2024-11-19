@@ -3,35 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        app:showAsAction="ifRoom"
-        android:title="@string/options"
-        android:icon="@drawable/menu_vertical"
-        >
-<menu>
-
-    <item
         android:id="@+id/settings"
         android:title="@string/settings"
-        android:icon="@drawable/tbd_settings"
-        />
+        android:icon="@drawable/tbd_settings" />
     <item
         android:id="@+id/info"
         android:title="@string/about_us"
-        android:icon="@drawable/tbd_info"
-        />
+        android:icon="@drawable/tbd_info" />
     <item
         android:id="@+id/feedback"
         android:title="@string/feedback"
-        android:icon="@drawable/tbd_feedback"
-        />
+        android:icon="@drawable/tbd_feedback" />
     <item
         android:id="@+id/exit"
         android:title="@string/exit"
-        android:icon="@drawable/tbd_exit"
-        />
-
-</menu>
-
-    </item>
-
+        android:icon="@drawable/tbd_exit" />
 </menu>

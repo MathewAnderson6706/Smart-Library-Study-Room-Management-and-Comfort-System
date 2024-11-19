@@ -9,6 +9,7 @@ Section RCB
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.os.Bundle;
+import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -18,6 +19,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -26,18 +29,19 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-//import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 
 public class RoomSettingsFragment extends Fragment {
 
     private DatabaseReference databaseReference;
     private String roomId;
+    private Handler handler = new Handler();
 
     public RoomSettingsFragment() {
         // Required empty public constructor
     }
 
-    //BottomNavigationView bottomNavigationView;
+
     HomeFragment homeFragment = new HomeFragment();
 
     @Override
@@ -45,6 +49,10 @@ public class RoomSettingsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_room_settings, container, false);
 
         TextView roomNameTextView = view.findViewById(R.id.lightingText);
+        TextView actualTemperatureTextView = view.findViewById(R.id.actualTemperatureTextView);
+        TextView targetTemperatureTextView = view.findViewById(R.id.targetTemperatureTextView);
+        SeekBar temperatureSeekBar = view.findViewById(R.id.temperatureSeekBar);
+        Button setTemperatureButton = view.findViewById(R.id.setTemperatureButton);
 
         // Retrieve the room ID from the arguments
         if (getArguments() != null) {
@@ -54,7 +62,7 @@ public class RoomSettingsFragment extends Fragment {
         databaseReference = FirebaseDatabase.getInstance().getReference("roooms");
 
         // Fetch room data
-        fetchRoomData(roomNameTextView);
+        fetchRoomData(roomNameTextView, actualTemperatureTextView, targetTemperatureTextView, temperatureSeekBar);
 
         // Set up the toolbar
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar2);
@@ -82,25 +90,42 @@ public class RoomSettingsFragment extends Fragment {
             ((MainActivity) getActivity()).syncDrawerToggle();
         });
 
+        // Set target temperature
+        setTemperatureButton.setOnClickListener(v -> {
+            if (roomId != null) {
+                int targetTemp = temperatureSeekBar.getProgress();
+                String targetTempStr = String.valueOf(targetTemp);
+                databaseReference.child(roomId).child("temperature").child("target").setValue(targetTempStr);
+                targetTemperatureTextView.setText("Target Temperature: " + targetTemp + "°C");
+                adjustActualTemperature(actualTemperatureTextView, targetTemp);
+            }
+        });
 
 
         return view;
     }
 
-    private void fetchRoomData(TextView roomNameTextView) {
+    private void fetchRoomData(TextView roomNameTextView, TextView actualTempText, TextView targetTempText, SeekBar seekBar) {
         if (roomId != null) {
             databaseReference.child(roomId).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
                     if (snapshot.exists()) {
                         String roomName = snapshot.child("name").getValue(String.class);
-                        //String temperature = snapshot.child("temperature").getValue(String.class);
+                        String actualTemp = snapshot.child("temperature").child("actual").getValue(String.class);
+                        String targetTemp = snapshot.child("temperature").child("target").getValue(String.class);
 
                         roomNameTextView.setText(roomName != null ? roomName : "Room Name Not Found");
-                        //temperatureTextView.setText(temperature != null ? temperature + "°C" : "Temperature Not Found");
+                        actualTempText.setText(actualTemp != null ? "Actual Temperature: " + actualTemp + "°C" : "Actual Temperature Not Found");
+                        targetTempText.setText(targetTemp != null ? "Target Temperature: " + targetTemp + "°C" : "Target Temperature Not Found");
+
+                        if (targetTemp != null) {
+                            seekBar.setProgress(Integer.parseInt(targetTemp));
+                        }
                     } else {
                         roomNameTextView.setText("Room Not Found");
-                        //temperatureTextView.setText("N/A");
+                        actualTempText.setText("N/A");
+                        targetTempText.setText("N/A");
                     }
                 }
 
@@ -108,6 +133,45 @@ public class RoomSettingsFragment extends Fragment {
                 public void onCancelled(DatabaseError error) {
                     roomNameTextView.setText("Error loading data");
                     //temperatureTextView.setText("Error");
+                }
+            });
+        }
+    }
+
+    private void adjustActualTemperature(TextView actualTempText, int targetTemp) {
+        if (roomId != null) {
+            databaseReference.child(roomId).child("temperature").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    String actualTempStr = snapshot.child("actual").getValue(String.class);
+
+                    if (actualTempStr != null) {
+                        int actualTemp = Integer.parseInt(actualTempStr);
+
+                        if (actualTemp < targetTemp) {
+                            actualTemp++;
+                        } else if (actualTemp > targetTemp) {
+                            actualTemp--;
+                        }
+
+                        String updatedActualTempStr = String.valueOf(actualTemp);
+
+                        // Update the database with the new actual temperature
+                        databaseReference.child(roomId).child("temperature").child("actual").setValue(updatedActualTempStr);
+
+                        // Update the UI
+                        actualTempText.setText("Actual Temperature: " + actualTemp + "°C");
+
+                        // Continue adjusting until the target is reached
+                        if (actualTemp != targetTemp) {
+                            handler.postDelayed(() -> adjustActualTemperature(actualTempText, targetTemp), 1000);
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Handle error
                 }
             });
         }

@@ -86,18 +86,27 @@ Section RCB
                 android:text="@string/lighting"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"/>
+
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp">
+                <TextView
+                    android:layout_marginStart="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dimness"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="25dp"/>
+
 
             <TextView
                 android:layout_marginStart="0dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ON/OFF"
+                android:text="Turn Light ON/OFF"
                 android:textColor="@color/black" />
 
             <androidx.appcompat.widget.SwitchCompat
@@ -113,6 +122,7 @@ Section RCB
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp">
+
 
             <SeekBar
                 android:id="@+id/seekbar"
@@ -146,7 +156,7 @@ Section RCB
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/room_101a"
+                android:text="@string/time"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"/>
@@ -208,7 +218,7 @@ Section RCB
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/room_101a"
+                    android:text="@string/temperature2"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_marginTop="20dp"/>
@@ -218,39 +228,42 @@ Section RCB
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/temperature"
-                android:textColor="@color/black"
-                android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/actualTemperatureTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Actual Temperature: 15°C"
+                    android:layout_marginTop="1dp" />
+
+                <TextView
+                    android:id="@+id/targetTemperatureTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Target Temperature: 20°C"
+                    android:layout_marginTop="20dp" />
             </RelativeLayout>
 
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/air_quality"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp" />
-            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp">
             <SeekBar
-                android:id="@+id/seekbar2"
+                android:id="@+id/temperatureSeekBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:max="100"
-                android:progress="50"
-                android:outlineAmbientShadowColor="@color/black"
-                android:layout_marginTop="10dp" />
+                android:max="30"
+                android:outlineAmbientShadowColor="@color/black" />
+
+                <Button
+                    android:id="@+id/setTemperatureButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set Temperature"
+                    android:layout_marginTop="12dp"/>
             </RelativeLayout>
         </LinearLayout>
 

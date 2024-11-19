@@ -59,76 +59,11 @@ public class SecondFragment extends Fragment {
     }
 
     private void setupRoom(ImageButton roomButton, String roomId) {
-        // Check room status in the database
-        databaseReference.child(roomId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    String status = snapshot.child("status").getValue(String.class);
-                    boolean isOccupied = "occupied".equals(status);
-
-                    // Enable room button if occupied
-                    roomButton.setEnabled(isOccupied);
-
-                    if (isOccupied) {
-                        roomButton.setImageResource(R.drawable.roombooked);
-                        roomButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorPrimary));
-                        roomButton.setOnClickListener(v -> promptForAccessCode(roomId));
-                    }
-                } else {
-                    Toast.makeText(getActivity(), "Room data not found", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                Toast.makeText(getActivity(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        RoomUtils.setupRoom(requireContext(), roomButton, roomId, databaseReference, selectedRoomId ->
+                AccessCodeUtils.promptForAccessCode(requireContext(), selectedRoomId, databaseReference, this::navigateToRoomSettings)
+        );
     }
 
-    private void promptForAccessCode(String roomId) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(R.string.enter_access_code);
-
-        // Input field for code
-        final EditText input = new EditText(getActivity());
-        builder.setView(input);
-
-        // Buttons
-        builder.setPositiveButton(R.string.ok, (dialog, which) -> {
-            String enteredCode = input.getText().toString();
-            checkAccessCode(roomId, enteredCode);
-        });
-        builder.setNegativeButton(R.string.cancel, (dialog, which) -> dialog.cancel());
-
-        builder.show();
-    }
-
-    private void checkAccessCode(String roomId, String enteredCode) {
-        // Retrieve the access code from Firebase
-        databaseReference.child(roomId).child("accessCode").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    String correctCode = snapshot.getValue(String.class);
-
-                    if (correctCode != null && correctCode.equals(enteredCode)) {
-                        navigateToRoomSettings();
-                    } else {
-                        Toast.makeText(getActivity(), R.string.invalid_code, Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(getActivity(), "Access code not set", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                Toast.makeText(getActivity(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     private void navigateToRoomSettings() {
         RoomSettingsFragment roomSettingsFragment = new RoomSettingsFragment();

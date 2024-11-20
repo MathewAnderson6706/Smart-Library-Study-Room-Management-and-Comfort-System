@@ -180,4 +180,7 @@ Section RCB
     <string name="location_permission_granted">Location permission granted</string>
     <string name="location_permission_denied">Location permission denied</string>
     <string name="name">name</string>
+    <string name="failed_to_load_user_data">Failed to load user data</string>
+    <string name="name1">name</string>
+    <string name="email1">email</string>
 </resources>

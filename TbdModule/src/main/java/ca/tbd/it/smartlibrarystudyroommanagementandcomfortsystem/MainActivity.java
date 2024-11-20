@@ -94,8 +94,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()) {
-                        String name = snapshot.child("name").getValue(String.class);
-                        String email = snapshot.child("email").getValue(String.class);
+                        String name = snapshot.child(getString(R.string.name1)).getValue(String.class);
+                        String email = snapshot.child(getString(R.string.email1)).getValue(String.class);
 
                         View headerView = navigationView.getHeaderView(0);
                         TextView usernameTextView = headerView.findViewById(R.id.name);
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(MainActivity.this, "Failed to load user data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.failed_to_load_user_data, Toast.LENGTH_SHORT).show();
                 }
             });
         }

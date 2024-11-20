@@ -1,12 +1,16 @@
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.content.DialogInterface;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
-
 import android.os.Bundle;
 import android.content.pm.PackageManager;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -15,15 +19,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
 import androidx.appcompat.widget.Toolbar;
 
-
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
-
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -31,8 +34,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     SettingsFragment settingsFragment = new SettingsFragment();
     FeedbackFragment feedbackFragment = new FeedbackFragment();
     UserProfileFragment userProfileFragment = new UserProfileFragment();
@@ -75,6 +78,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         };
         getOnBackPressedDispatcher().addCallback(this, callback);
+
+        setUserDataInNavigationHeader();
+    }
+
+    private void setUserDataInNavigationHeader() {
+        SharedPreferences prefs = getSharedPreferences(getString(R.string.userprefs), MODE_PRIVATE);
+        String username = prefs.getString(getString(R.string.username1), "");
+
+        if (!TextUtils.isEmpty(username)) {
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference(getString(R.string.users1));
+            DatabaseReference userRef = reference.child(username.replace(".", ","));
+
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        String name = snapshot.child("name").getValue(String.class);
+                        String email = snapshot.child("email").getValue(String.class);
+
+                        View headerView = navigationView.getHeaderView(0);
+                        TextView usernameTextView = headerView.findViewById(R.id.name);
+                        TextView emailTextView = headerView.findViewById(R.id.email2);
+
+                        usernameTextView.setText(name);
+                        emailTextView.setText(email);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(MainActivity.this, "Failed to load user data", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     @Override
@@ -189,7 +226,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent);
         finish();
     }
-
 
     public void displayAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

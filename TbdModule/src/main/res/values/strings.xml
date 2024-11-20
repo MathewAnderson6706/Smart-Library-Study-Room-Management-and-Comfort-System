@@ -179,4 +179,5 @@ Section RCB
     <string name="remember_me3">remember_me</string>
     <string name="location_permission_granted">Location permission granted</string>
     <string name="location_permission_denied">Location permission denied</string>
+    <string name="name">name</string>
 </resources>

@@ -183,4 +183,5 @@ Section RCB
     <string name="failed_to_load_user_data">Failed to load user data</string>
     <string name="name1">name</string>
     <string name="email1">email</string>
+    <string name="access_code_not_set">Access code not set</string>
 </resources>

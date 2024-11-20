@@ -39,7 +39,7 @@ public class AccessCodeUtils {
                         Toast.makeText(context, R.string.invalid_code, Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(context, "Access code not set", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.access_code_not_set, Toast.LENGTH_SHORT).show();
                 }
             }
 

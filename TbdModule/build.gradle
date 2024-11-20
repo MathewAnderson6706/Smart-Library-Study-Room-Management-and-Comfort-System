@@ -27,6 +27,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true // Include Android resources for Robolectric
+        }
+    }
 }
 
 dependencies {
@@ -40,8 +46,20 @@ dependencies {
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
 
-    // Import the Firebase BoM
+    // Robolectric for Android unit tests
+    testImplementation 'org.robolectric:robolectric:4.10.3'
+    // AndroidX Test Core for Robolectric support
+    testImplementation 'androidx.test:core:1.5.0'
+
+    // JUnit 4 for unit testing
+    testImplementation 'junit:junit:4.13.2'
+
+    // Mockito Core for mocking
+    testImplementation 'org.mockito:mockito-core:4.8.0'
+    // Optional: Mockito Inline for final classes and methods
+    testImplementation 'org.mockito:mockito-inline:4.8.0'
+
+    // Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:33.5.1')
-    // Add Firebase Analytics (and other Firebase products you may want to use)
     implementation 'com.google.firebase:firebase-analytics'
 }

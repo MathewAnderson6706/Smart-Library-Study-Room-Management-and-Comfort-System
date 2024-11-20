@@ -94,8 +94,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()) {
-                        String name = snapshot.child(getString(R.string.name1)).getValue(String.class);
-                        String email = snapshot.child(getString(R.string.email1)).getValue(String.class);
+                        String name = snapshot.child("name").getValue(String.class);
+                        String email = snapshot.child("email").getValue(String.class);
 
                         View headerView = navigationView.getHeaderView(0);
                         TextView usernameTextView = headerView.findViewById(R.id.name);

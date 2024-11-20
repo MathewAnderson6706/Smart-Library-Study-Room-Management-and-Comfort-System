@@ -179,5 +179,9 @@ Section RCB
     <string name="remember_me3">remember_me</string>
     <string name="location_permission_granted">Location permission granted</string>
     <string name="location_permission_denied">Location permission denied</string>
+    <string name="name">name</string>
+    <string name="failed_to_load_user_data">Failed to load user data</string>
+    <string name="name1">name</string>
+    <string name="email1">email</string>
     <string name="access_code_not_set">Access code not set</string>
 </resources>

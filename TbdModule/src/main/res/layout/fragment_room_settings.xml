@@ -8,37 +8,270 @@ Safah Virk N01596470
 Section RCB
 -->
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/splash_background"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/settings_exit"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:padding="14dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Room Settings"
+            android:layout_centerInParent="true"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+    </RelativeLayout>
+
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <FrameLayout
-                android:id="@+id/roomSettingsFragmentContainer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="?attr/actionBarSize" />
 
-        </FrameLayout>
+        <LinearLayout
+            android:background="@drawable/bg_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="80dp"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <!-- Lighting-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+            <TextView
+                android:id="@+id/lightingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/room_101a"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lighting"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+                <TextView
+                    android:layout_marginStart="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dimness"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="25dp"/>
+
+
+            <TextView
+                android:layout_marginStart="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Turn Light ON/OFF"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tbdtool_night"
+                android:layout_marginStart="280dp"
+                android:switchMinWidth="50dp"
+                android:theme="@style/nightModeSwitch"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+
+            <SeekBar
+                android:id="@+id/seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="50"
+                android:layout_marginTop="0dp" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/bg_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <!--Time-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time"
+                android:textColor="@color/black"
+                android:layout_marginTop="0dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/timer"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+            <TextClock
+                android:id="@+id/textClock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/bg_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:padding="15dp">
+            <!--Temperature-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/temperature2"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="20dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+                <TextView
+                    android:id="@+id/actualTemperatureTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Actual Temperature: 15°C"
+                    android:layout_marginTop="1dp" />
+
+                <TextView
+                    android:id="@+id/targetTemperatureTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Target Temperature: 20°C"
+                    android:layout_marginTop="20dp" />
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+            <SeekBar
+                android:id="@+id/temperatureSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="30"
+                android:outlineAmbientShadowColor="@color/black" />
+
+                <Button
+                    android:id="@+id/setTemperatureButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set Temperature"
+                    android:layout_marginTop="12dp"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        </LinearLayout>
+
 
     </ScrollView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/roomSettingsBottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:menu="@menu/bottom_nav_menu" />
 
-</FrameLayout>
+</LinearLayout>

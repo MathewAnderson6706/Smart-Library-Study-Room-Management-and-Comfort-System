@@ -155,6 +155,7 @@ public class LoginActivityTest {
         assertFalse("Username validation should return false for null input", result);
     }
 
+
     @Test
     public void validatePassword_shouldHandleNullInputGracefully() {
         when(loginActivity.passwordInput.getText().toString()).thenReturn(null);

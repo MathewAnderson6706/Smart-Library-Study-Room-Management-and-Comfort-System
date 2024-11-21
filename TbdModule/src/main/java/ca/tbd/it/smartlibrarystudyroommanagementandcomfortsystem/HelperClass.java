@@ -10,7 +10,7 @@ package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 public class HelperClass {
 
-    String name, email, password;
+    String name, email, password, phone;
 
     public String getName() {
         return name;

@@ -26,6 +26,7 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText nameInput;
     EditText emailInput;
     EditText passwordInput;
+    EditText phoneInput;
     Button registerButton;
     TextView loginText;
     FirebaseDatabase database;
@@ -39,6 +40,7 @@ public class RegistrationActivity extends AppCompatActivity {
         nameInput = findViewById(R.id.nameInput);
         emailInput = findViewById(R.id.emailInput);
         passwordInput = findViewById(R.id.passwordInput);
+        phoneInput = findViewById(R.id.phoneNumberInput);
         registerButton = findViewById(R.id.registerButton);
         loginText = findViewById(R.id.loginText);
 
@@ -52,8 +54,9 @@ public class RegistrationActivity extends AppCompatActivity {
                 String email = emailInput.getText().toString();
                 String sanitizedEmail = email.replace(".", ","); // Replace '.' with ','
                 String password = passwordInput.getText().toString();
+                String phone = phoneInput.getText().toString();
 
-                HelperClass helperClass = new HelperClass(name, email, password);
+                HelperClass helperClass = new HelperClass(name, email, password, phone);
                 reference.child(sanitizedEmail).setValue(helperClass);
 
                 Toast.makeText(RegistrationActivity.this, R.string.you_have_registered_an_account, Toast.LENGTH_SHORT).show();

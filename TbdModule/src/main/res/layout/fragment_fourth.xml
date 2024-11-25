@@ -20,6 +20,7 @@ Section RCB
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
         <FrameLayout
             android:id="@+id/frame1D"
             android:layout_width="100dp"

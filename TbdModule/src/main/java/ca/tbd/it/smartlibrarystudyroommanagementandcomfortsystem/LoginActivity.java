@@ -100,6 +100,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+
     public void checkUser() {
         String userUsername = usernameInput.getText().toString().trim();
         String sanitizedUsername = userUsername.replace(".", ",");
@@ -108,7 +109,8 @@ public class LoginActivity extends AppCompatActivity {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference(getString(R.string.users1));
         DatabaseReference userRef = reference.child(sanitizedUsername);
 
-        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+                userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 progressBar.setVisibility(View.GONE);

@@ -6,8 +6,6 @@
     android:background="@drawable/splash_background"
     tools:context=".FeedbackFragment">
 
-
-
     <RatingBar
         android:id="@+id/rating"
         style="?android:attr/ratingBarStyleSmall"
@@ -19,14 +17,16 @@
         android:numStars="5"
         android:stepSize="0.1"
         android:scaleX="2"
-        android:scaleY="2"/>
+        android:scaleY="2" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/please_submit_a_review" />
+        android:text="@string/please_submit_a_review"
+        android:textStyle="bold"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/fullNameInput"
@@ -69,5 +69,15 @@
         android:text="@string/submit_review"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="310dp" />
+
+    <TextView
+        android:id="@+id/countdownTimerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="visible" />
 
 </FrameLayout>

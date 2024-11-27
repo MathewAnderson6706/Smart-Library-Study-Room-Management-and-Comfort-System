@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,13 +22,17 @@ import androidx.annotation.Nullable;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.concurrent.TimeUnit;
+
 public class FeedbackFragment extends Fragment {
 
     private EditText fullNameInput, phoneNumberInput, emailInput, commentBox;
     private RatingBar ratingBar;
     private Button submitButton;
+    private TextView countdownTimerText;
     private FirebaseDatabase database;
     private DatabaseReference feedbackRef;
+    private Handler handler = new Handler();
 
     public FeedbackFragment() {}
 
@@ -42,9 +48,15 @@ public class FeedbackFragment extends Fragment {
         commentBox = view.findViewById(R.id.commentBox);
         ratingBar = view.findViewById(R.id.rating);
         submitButton = view.findViewById(R.id.submitButton);
+        countdownTimerText = view.findViewById(R.id.countdownTimerText);
 
         database = FirebaseDatabase.getInstance();
         feedbackRef = database.getReference("feedback");
+
+        if (!canSubmitFeedback()) {
+            disableSubmitButton();
+            startCountdown();
+        }
 
         submitButton.setOnClickListener(v -> {
             if (canSubmitFeedback()) {
@@ -71,6 +83,38 @@ public class FeedbackFragment extends Fragment {
         editor.apply();
     }
 
+    private void disableSubmitButton() {
+        submitButton.setEnabled(false);
+        submitButton.setAlpha(0.5f);
+    }
+
+    private void enableSubmitButton() {
+        submitButton.setEnabled(true);
+        submitButton.setAlpha(1.0f);
+    }
+
+    private void startCountdown() {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                long lastSubmissionTime = preferences.getLong("last_feedback_time", 0);
+                long remainingTime = 86400000 - (System.currentTimeMillis() - lastSubmissionTime);
+
+                if (remainingTime > 0) {
+                    long hours = TimeUnit.MILLISECONDS.toHours(remainingTime);
+                    long minutes = TimeUnit.MILLISECONDS.toMinutes(remainingTime) % 60;
+                    long seconds = TimeUnit.MILLISECONDS.toSeconds(remainingTime) % 60;
+                    countdownTimerText.setText(String.format("You can submit feedback in %02d:%02d:%02d", hours, minutes, seconds));
+                    handler.postDelayed(this, 1000);
+                } else {
+                    countdownTimerText.setText("");
+                    enableSubmitButton();
+                }
+            }
+        });
+    }
+
     private void submitFeedback() {
         String fullName = fullNameInput.getText().toString().trim();
         String phoneNumber = phoneNumberInput.getText().toString().trim();
@@ -88,6 +132,8 @@ public class FeedbackFragment extends Fragment {
         feedbackRef.push().setValue(feedback).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 saveSubmissionTime();
+                disableSubmitButton();
+                startCountdown();
                 Toast.makeText(getContext(), "Feedback submitted successfully!", Toast.LENGTH_SHORT).show();
                 clearFields();
             } else {

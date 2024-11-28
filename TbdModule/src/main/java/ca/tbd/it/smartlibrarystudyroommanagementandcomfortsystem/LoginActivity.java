@@ -90,10 +90,10 @@ public class LoginActivity extends AppCompatActivity {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso);
 
-    // Initialize Firebase Auth
+        // Initialize Firebase Auth
         firebaseAuth = FirebaseAuth.getInstance();
 
-    // Google Sign-In button listener
+        // Google Sign-In button listener
         findViewById(R.id.googleSignInButton).setOnClickListener(v -> signInWithGoogle());
     }
 

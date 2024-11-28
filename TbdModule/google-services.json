@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "932079205234-r1f2go1hv7b071oolvj78cg5cu429b04.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem",
+            "certificate_hash": "d08f0fe1a95560d1741640b14180b03ed939a4cb"
+          }
+        },
+        {
           "client_id": "932079205234-31a3dvvotifpdtqp1e55aijuld9hv7sl.apps.googleusercontent.com",
           "client_type": 3
         }

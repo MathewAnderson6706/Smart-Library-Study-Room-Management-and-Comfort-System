@@ -63,12 +63,15 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         boolean isRemembered = prefs.getBoolean(KEY_REMEMBER_ME, false);
 
+        String savedUsername = prefs.getString(KEY_USERNAME, "");
+        String savedPassword = prefs.getString(KEY_PASSWORD, "");
+
         if (isRemembered) {
-            String savedUsername = prefs.getString(KEY_USERNAME, "");
-            String savedPassword = prefs.getString(KEY_PASSWORD, "");
             usernameInput.setText(savedUsername);
             passwordInput.setText(savedPassword);
             rememberMeCheckBox.setChecked(true);
+        } else {
+            rememberMeCheckBox.setChecked(false);
         }
 
         loginButton.setOnClickListener(v -> {
@@ -174,9 +177,9 @@ public class LoginActivity extends AppCompatActivity {
 
                         // Save user info if "Remember Me" is checked
                         if (rememberMeCheckBox.isChecked()) {
-                            saveUserInfo(userUsername, userPassword);
+                            saveUserInfo(userUsername, userPassword, true);
                         } else {
-                            clearUserInfo();
+                            saveUserInfo(userUsername, userPassword, false);
                         }
 
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
@@ -197,12 +200,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void saveUserInfo(String username, String password) {
+    private void saveUserInfo(String username, String password, boolean rememberMe) {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(KEY_USERNAME, username);
         editor.putString(KEY_PASSWORD, password);
-        editor.putBoolean(KEY_REMEMBER_ME, true);
+        editor.putBoolean(KEY_REMEMBER_ME, rememberMe);
         editor.apply();
     }
 

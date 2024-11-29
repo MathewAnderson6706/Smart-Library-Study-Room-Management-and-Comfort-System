@@ -184,4 +184,10 @@ Section RCB
     <string name="name1">name</string>
     <string name="email1">email</string>
     <string name="access_code_not_set">Access code not set</string>
+    <string name="generate_code">Generate code</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="aboutUs">We are committed to providing the best services to our users with an innovative and customer-centric approach. Our mission is to enhance your experience and deliver quality.</string>
+    <string name="contact_Us">Contact Us</string>
+    <string name="aboutUs_image">Profile Image</string>
+    <string name="info_aboutUs">About Us</string>
 </resources>

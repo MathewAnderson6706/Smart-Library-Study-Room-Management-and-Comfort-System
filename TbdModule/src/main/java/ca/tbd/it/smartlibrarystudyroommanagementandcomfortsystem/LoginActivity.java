@@ -1,3 +1,11 @@
+/*
+Mathew Anderson-Saavedra n01436706
+Nicole Chlea Manaoat N01565017
+Medi Muamba Nzambi N01320883
+Section RCA
+Safah Virk N01596470
+Section RCB
+ */
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.content.Intent;
@@ -87,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Configure Google Sign-In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id)) // Replace with your client ID from Firebase Console
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 

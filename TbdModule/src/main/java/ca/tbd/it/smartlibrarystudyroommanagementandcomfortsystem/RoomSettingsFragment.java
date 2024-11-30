@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -53,6 +54,8 @@ public class RoomSettingsFragment extends Fragment {
         TextView targetTemperatureTextView = view.findViewById(R.id.targetTemperatureTextView);
         SeekBar temperatureSeekBar = view.findViewById(R.id.temperatureSeekBar);
         Button setTemperatureButton = view.findViewById(R.id.setTemperatureButton);
+        SwitchCompat lightSwitch = view.findViewById(R.id.lightSwitch);
+        SeekBar lightDimnessSeekBar = view.findViewById(R.id.lightDimnessSeekBar);
 
         // Retrieve the room ID from the arguments
         if (getArguments() != null) {
@@ -63,6 +66,9 @@ public class RoomSettingsFragment extends Fragment {
 
         // Fetch room data
         fetchRoomData(roomNameTextView, actualTemperatureTextView, targetTemperatureTextView, temperatureSeekBar);
+
+        // Fetch Light data
+        fetchLightData(lightSwitch, lightDimnessSeekBar);
 
         // Set up the toolbar
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar2);
@@ -101,6 +107,32 @@ public class RoomSettingsFragment extends Fragment {
             }
         });
 
+        // Light Switch Toggle
+        lightSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (roomId != null) {
+                databaseReference.child(roomId).child("light").child("state").setValue(isChecked ? "ON" : "OFF");
+            }
+        });
+
+        // Light Dimness SeekBar
+        lightDimnessSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (roomId != null) {
+                    databaseReference.child(roomId).child("light").child("dimness").setValue(progress);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // Do nothing
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // Do nothing
+            }
+        });
 
         return view;
     }
@@ -172,6 +204,35 @@ public class RoomSettingsFragment extends Fragment {
                 @Override
                 public void onCancelled(DatabaseError error) {
                     // Handle error
+                }
+            });
+        }
+    }
+
+    private void fetchLightData(SwitchCompat lightSwitch, SeekBar lightDimnessSeekBar) {
+        if (roomId != null) {
+            databaseReference.child(roomId).child("light").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        // Get light state
+                        String state = snapshot.child("state").getValue(String.class);
+                        lightSwitch.setChecked("ON".equals(state));
+
+                        // Get light dimness
+                        Integer dimness = snapshot.child("dimness").getValue(Integer.class);
+                        if (dimness != null) {
+                            lightDimnessSeekBar.setProgress(dimness);
+                        }
+                    } else {
+                        lightSwitch.setChecked(false);
+                        lightDimnessSeekBar.setProgress(0);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Handle error (optional: show error message to the user)
                 }
             });
         }

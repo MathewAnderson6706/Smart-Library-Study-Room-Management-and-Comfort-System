@@ -79,16 +79,16 @@ Section RCB
         android:textSize="16sp" />
 
     <!-- Sign in with Google button -->
-    <Button
+    <com.google.android.gms.common.SignInButton
         android:id="@+id/googleSignInButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sign_in_with_google1"
         android:drawableStart="@drawable/ic_google"
+        android:text="@string/sign_in_with_google1"
         android:textColor="@android:color/black"
         android:background="#80FFFFFF"
         android:layout_marginBottom="16dp"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"/>
 
     <!-- Sign up link (unchanged) -->
     <TextView

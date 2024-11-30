@@ -29,6 +29,7 @@ Section RCB
         android:id="@+id/usernameInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:autofillHints="emailAddress"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:background="#80FFFFFF"
@@ -41,6 +42,7 @@ Section RCB
         android:id="@+id/passwordInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:autofillHints="password"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:background="#80FFFFFF"
@@ -77,16 +79,16 @@ Section RCB
         android:textSize="16sp" />
 
     <!-- Sign in with Google button -->
-    <Button
+    <com.google.android.gms.common.SignInButton
         android:id="@+id/googleSignInButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sign_in_with_google1"
         android:drawableStart="@drawable/ic_google"
+        android:text="@string/sign_in_with_google1"
         android:textColor="@android:color/black"
         android:background="#80FFFFFF"
         android:layout_marginBottom="16dp"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"/>
 
     <!-- Sign up link (unchanged) -->
     <TextView
@@ -98,4 +100,11 @@ Section RCB
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:minHeight="48dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 </LinearLayout>

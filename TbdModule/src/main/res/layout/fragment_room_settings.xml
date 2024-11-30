@@ -110,9 +110,9 @@ Section RCB
                 android:textColor="@color/black" />
 
             <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/lightSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tbdtool_night"
                 android:layout_marginStart="280dp"
                 android:switchMinWidth="50dp"
                 android:theme="@style/nightModeSwitch"/>
@@ -125,11 +125,10 @@ Section RCB
 
 
             <SeekBar
-                android:id="@+id/seekbar"
+                android:id="@+id/lightDimnessSeekBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="100"
-                android:progress="50"
                 android:layout_marginTop="0dp" />
             </RelativeLayout>
 

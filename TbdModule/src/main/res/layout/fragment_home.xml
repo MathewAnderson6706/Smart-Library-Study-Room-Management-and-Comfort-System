@@ -20,7 +20,24 @@ Section RCB
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <FrameLayout
+      <!-- Floating Action Button -->
+
+      <com.google.android.material.floatingactionbutton.FloatingActionButton
+          android:id="@+id/fab_generate_code"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="16dp"
+          app:layout_anchorGravity="bottom|end"
+          android:src="@drawable/fab"
+          android:contentDescription="@string/generate_code"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.907"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintVertical_bias="0.883" />
+
+      <FrameLayout
         android:id="@+id/frame1A"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -163,6 +180,8 @@ Section RCB
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

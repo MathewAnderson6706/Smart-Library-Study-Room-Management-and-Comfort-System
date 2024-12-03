@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,22 +98,37 @@ public class FeedbackFragment extends Fragment {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-                long lastSubmissionTime = preferences.getLong("last_feedback_time", 0);
-                long remainingTime = 86400000 - (System.currentTimeMillis() - lastSubmissionTime);
+                // Ensure the fragment is attached to an activity before accessing context
+                if (getContext() != null) {
+                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    long lastSubmissionTime = preferences.getLong("last_feedback_time", 0);
+                    long remainingTime = 86400000 - (System.currentTimeMillis() - lastSubmissionTime);
 
-                if (remainingTime > 0) {
-                    long hours = TimeUnit.MILLISECONDS.toHours(remainingTime);
-                    long minutes = TimeUnit.MILLISECONDS.toMinutes(remainingTime) % 60;
-                    long seconds = TimeUnit.MILLISECONDS.toSeconds(remainingTime) % 60;
-                    countdownTimerText.setText(String.format("You can submit feedback in %02d:%02d:%02d", hours, minutes, seconds));
-                    handler.postDelayed(this, 1000);
-                } else {
-                    countdownTimerText.setText("");
-                    enableSubmitButton();
+                    if (remainingTime > 0) {
+                        long hours = TimeUnit.MILLISECONDS.toHours(remainingTime);
+                        long minutes = TimeUnit.MILLISECONDS.toMinutes(remainingTime) % 60;
+                        long seconds = TimeUnit.MILLISECONDS.toSeconds(remainingTime) % 60;
+                        countdownTimerText.setText(String.format("You can submit feedback in %02d:%02d:%02d", hours, minutes, seconds));
+                        handler.postDelayed(this, 1000);
+                    } else {
+                        countdownTimerText.setText("");
+                        enableSubmitButton();
+                    }
                 }
             }
         });
+    }
+
+    private boolean validateInput() {
+        // Validate all input fields
+        if (!InputValidator.validateName(fullNameInput)) return false;
+        if (!InputValidator.validateEmail(emailInput)) return false;
+        if (!InputValidator.validatePhone(phoneNumberInput)) return false;
+        if (TextUtils.isEmpty(commentBox.getText())) {
+            commentBox.setError("Comment is required");
+            return false;
+        }
+        return true;
     }
 
     private void submitFeedback() {

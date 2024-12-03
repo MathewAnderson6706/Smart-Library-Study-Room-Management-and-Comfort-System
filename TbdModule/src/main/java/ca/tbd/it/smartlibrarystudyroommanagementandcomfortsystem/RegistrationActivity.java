@@ -78,14 +78,14 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
-    private boolean validateInputs(String name, String email, String password, String confirmPassword, String phone) {
+    public boolean validateInputs(String name, String email, String password, String confirmPassword, String phone) {
         return InputValidator.validateName(nameInput) &&
                 InputValidator.validateEmail(emailInput) &&
                 InputValidator.validatePassword(passwordInput, passwordConfirmInput) &&
                 InputValidator.validatePhone(phoneInput);
     }
 
-    private void checkEmailExistsAndRegister(String sanitizedEmail, HelperClass helperClass) {
+    public void checkEmailExistsAndRegister(String sanitizedEmail, HelperClass helperClass) {
         reference.child(sanitizedEmail).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -104,7 +104,7 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
-    private void registerUser(String sanitizedEmail, HelperClass helperClass) {
+    public void registerUser(String sanitizedEmail, HelperClass helperClass) {
         reference.child(sanitizedEmail).setValue(helperClass)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(RegistrationActivity.this, R.string.you_have_registered_an_account, Toast.LENGTH_SHORT).show();

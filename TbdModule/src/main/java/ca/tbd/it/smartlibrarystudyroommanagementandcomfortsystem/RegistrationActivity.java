@@ -79,38 +79,10 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private boolean validateInputs(String name, String email, String password, String confirmPassword, String phone) {
-        // Name validation
-        if (TextUtils.isEmpty(name)) {
-            nameInput.setError("Name is required");
-            return false;
-        }
-
-        // Email validation
-        if (TextUtils.isEmpty(email) || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailInput.setError("Enter a valid email address");
-            return false;
-        }
-
-        // Password validation
-        if (password.length() < 6 || !password.matches(".*[a-zA-Z].*") || !password.matches(".*\\d.*") ||
-                !password.matches(".*[@#$%^&+=!].*") || !password.matches(".*[A-Z].*")) {
-            passwordInput.setError("Password must be at least 6 characters, contain upper case letters, digits, and special characters");
-            return false;
-        }
-
-        // Confirm password validation
-        if (!password.equals(confirmPassword)) {
-            passwordConfirmInput.setError("Passwords do not match");
-            return false;
-        }
-
-        // Phone number validation
-        if (phone.length() != 10 || !phone.matches("\\d{10}")) {
-            phoneInput.setError("Enter a valid 10-digit phone number");
-            return false;
-        }
-
-        return true;
+        return InputValidator.validateName(nameInput) &&
+                InputValidator.validateEmail(emailInput) &&
+                InputValidator.validatePassword(passwordInput, passwordConfirmInput) &&
+                InputValidator.validatePhone(phoneInput);
     }
 
     private void checkEmailExistsAndRegister(String sanitizedEmail, HelperClass helperClass) {

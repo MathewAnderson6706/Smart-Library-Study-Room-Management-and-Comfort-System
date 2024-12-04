@@ -34,6 +34,9 @@ public class FeedbackFragment extends Fragment {
     private FirebaseDatabase database;
     private DatabaseReference feedbackRef;
     private Handler handler = new Handler();
+    private static final String PREFS_NAME = "UserPrefs";
+    private static final String KEY_USERNAME = "username";
+    private DatabaseReference databaseReference;
 
     public FeedbackFragment() {}
 
@@ -54,6 +57,11 @@ public class FeedbackFragment extends Fragment {
         database = FirebaseDatabase.getInstance();
         feedbackRef = database.getReference("feedback");
 
+        databaseReference = FirebaseDatabase.getInstance().getReference("users");
+
+        SharedPreferences prefs = requireActivity().getSharedPreferences(PREFS_NAME, requireContext().MODE_PRIVATE);
+
+
         if (!canSubmitFeedback()) {
             disableSubmitButton();
             startCountdown();
@@ -61,7 +69,9 @@ public class FeedbackFragment extends Fragment {
 
         submitButton.setOnClickListener(v -> {
             if (canSubmitFeedback()) {
-                submitFeedback();
+                if (validateInput()) { // Validate the input before submitting
+                    submitFeedback();
+                }
             } else {
                 Toast.makeText(getContext(), "You can only submit feedback once every 24 hours.", Toast.LENGTH_SHORT).show();
             }
@@ -72,16 +82,23 @@ public class FeedbackFragment extends Fragment {
 
     private boolean canSubmitFeedback() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        long lastSubmissionTime = preferences.getLong("last_feedback_time", 0);
+        String username = getLoggedInUsername(); // Replace this with how you fetch the current logged-in username
+        long lastSubmissionTime = preferences.getLong(username + "_last_feedback_time", 0); // Use username as the key
         long currentTime = System.currentTimeMillis();
-        return (currentTime - lastSubmissionTime) >= 86400000;
+        return (currentTime - lastSubmissionTime) >= 86400000; // 24 hours in milliseconds
     }
 
     private void saveSubmissionTime() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putLong("last_feedback_time", System.currentTimeMillis());
+        String username = getLoggedInUsername(); // Replace this with how you fetch the current logged-in username
+        editor.putLong(username + "_last_feedback_time", System.currentTimeMillis()); // Store the time per user
         editor.apply();
+    }
+
+    private String getLoggedInUsername() {
+        SharedPreferences prefs = requireActivity().getSharedPreferences(PREFS_NAME, requireContext().MODE_PRIVATE);
+        return prefs.getString(KEY_USERNAME, ""); // Replace with how you're storing the username
     }
 
     private void disableSubmitButton() {
@@ -101,7 +118,8 @@ public class FeedbackFragment extends Fragment {
                 // Ensure the fragment is attached to an activity before accessing context
                 if (getContext() != null) {
                     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-                    long lastSubmissionTime = preferences.getLong("last_feedback_time", 0);
+                    String username = getLoggedInUsername(); // Fetch logged-in username
+                    long lastSubmissionTime = preferences.getLong(username + "_last_feedback_time", 0); // Use username as the key
                     long remainingTime = 86400000 - (System.currentTimeMillis() - lastSubmissionTime);
 
                     if (remainingTime > 0) {

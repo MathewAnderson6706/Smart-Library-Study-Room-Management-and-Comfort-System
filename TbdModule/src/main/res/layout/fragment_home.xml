@@ -22,14 +22,13 @@ Section RCB
 
       <!-- Floating Action Button -->
 
-
       <com.google.android.material.floatingactionbutton.FloatingActionButton
           android:id="@+id/fab_generate_code"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_margin="16dp"
           android:contentDescription="@string/generate_code"
-          android:src="@drawable/fab"
+          android:src="@drawable/add_message"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintHorizontal_bias="0.895"

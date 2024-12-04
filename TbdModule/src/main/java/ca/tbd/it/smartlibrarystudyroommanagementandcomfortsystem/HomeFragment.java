@@ -8,23 +8,23 @@ Section RCB
  */
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-
 
 public class HomeFragment extends Fragment {
 
     private DatabaseReference databaseReference;
-
 
     public HomeFragment() {
         // Required empty public constructor
@@ -36,8 +36,10 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("roooms");
+        // Initialize Firebase database reference
+        databaseReference = FirebaseDatabase.getInstance().getReference("rooms");
 
+        // Initialize room buttons
         ImageButton room1a = view.findViewById(R.id.room1a);
         ImageButton room2a = view.findViewById(R.id.room2a);
         ImageButton room3a = view.findViewById(R.id.room3a);
@@ -48,6 +50,20 @@ public class HomeFragment extends Fragment {
         setupRoom(room2a, "room2a");
         setupRoom(room3a, "room3a");
         setupRoom(room4a, "room4a");
+
+        // Initialize the FloatingActionButton
+        FloatingActionButton fab = view.findViewById(R.id.fab_generate_code);
+
+        // Set a click listener on the FAB
+        fab.setOnClickListener(v -> {
+            // Display a Snackbar message when the FAB is clicked
+            Snackbar.make(view, "You need a code to proceed. Tap the button to generate one!", Snackbar.LENGTH_LONG)
+                    .setAnchorView(fab) // Ensure Snackbar is anchored to the FAB
+                    .show();
+
+            // Simulate code generation or trigger a related action
+            generateAccessCode();
+        });
 
         return view;
     }
@@ -71,5 +87,13 @@ public class HomeFragment extends Fragment {
                 .replace(R.id.tbdFlFragment, roomSettingsFragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    private void generateAccessCode() {
+        // Simulate a delay for generating the access code
+        new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(() -> {
+            // Show a Toast message indicating the code generation was successful
+            Snackbar.make(getView(), "Access code generated successfully!", Snackbar.LENGTH_LONG).show();
+        }, 3000); // Delay for 3 seconds
     }
 }

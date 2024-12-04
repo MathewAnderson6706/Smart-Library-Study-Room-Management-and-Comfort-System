@@ -17,7 +17,11 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
+import androidx.core.app.NotificationCompat;
+
 import androidx.annotation.Nullable;
 
 import com.google.firebase.database.DatabaseReference;
@@ -78,6 +82,20 @@ public class FeedbackFragment extends Fragment {
         return view;
     }
 
+    public void sendNotification(Context context) {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "FEEDBACK_CHANNEL")
+                .setSmallIcon(R.drawable.ic_launcher_playstore2)
+                .setContentTitle("Feedback Available")
+                .setContentText("You can submit feedback now!")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true);
+
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        if (notificationManager != null) {
+            notificationManager.notify(1, builder.build());
+        }
+    }
+
     private boolean canSubmitFeedback() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String username = getLoggedInUsername();
@@ -129,6 +147,7 @@ public class FeedbackFragment extends Fragment {
                     } else {
                         countdownTimerText.setText("");
                         enableSubmitButton();
+                        sendNotification(getContext());
                     }
                 }
             }

@@ -56,6 +56,16 @@ public class ThirdFragment extends Fragment {
         setupRoom(room3c, "room3c");
         setupRoom(room4c, "room4c");
 
+        // Initialize the FloatingActionButton
+        FloatingActionButton fab = view.findViewById(R.id.fab_generate_code);
+
+        // Set a click listener on the FAB
+        fab.setOnClickListener(v -> {
+            // Display a Snack bar message with information about codes
+            Snackbar.make(view, "This screen requires codes to access rooms.", Snackbar.LENGTH_LONG)
+                    .setAnchorView(fab) // Ensure Snack bar is anchored to the FAB
+                    .show();
+        });
 
         return view;
     }

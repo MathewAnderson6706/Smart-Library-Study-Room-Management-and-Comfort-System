@@ -36,7 +36,6 @@ public class FeedbackFragment extends Fragment {
     private Handler handler = new Handler();
     private static final String PREFS_NAME = "UserPrefs";
     private static final String KEY_USERNAME = "username";
-    private DatabaseReference databaseReference;
 
     public FeedbackFragment() {}
 
@@ -59,8 +58,6 @@ public class FeedbackFragment extends Fragment {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
 
-        SharedPreferences prefs = requireActivity().getSharedPreferences(PREFS_NAME, requireContext().MODE_PRIVATE);
-
 
         if (!canSubmitFeedback()) {
             disableSubmitButton();
@@ -82,7 +79,7 @@ public class FeedbackFragment extends Fragment {
 
     private boolean canSubmitFeedback() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String username = getLoggedInUsername(); // Replace this with how you fetch the current logged-in username
+        String username = getLoggedInUsername();
         long lastSubmissionTime = preferences.getLong(username + "_last_feedback_time", 0); // Use username as the key
         long currentTime = System.currentTimeMillis();
         return (currentTime - lastSubmissionTime) >= 86400000; // 24 hours in milliseconds
@@ -91,14 +88,14 @@ public class FeedbackFragment extends Fragment {
     private void saveSubmissionTime() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = preferences.edit();
-        String username = getLoggedInUsername(); // Replace this with how you fetch the current logged-in username
+        String username = getLoggedInUsername();
         editor.putLong(username + "_last_feedback_time", System.currentTimeMillis()); // Store the time per user
         editor.apply();
     }
 
     private String getLoggedInUsername() {
         SharedPreferences prefs = requireActivity().getSharedPreferences(PREFS_NAME, requireContext().MODE_PRIVATE);
-        return prefs.getString(KEY_USERNAME, ""); // Replace with how you're storing the username
+        return prefs.getString(KEY_USERNAME, "");
     }
 
     private void disableSubmitButton() {

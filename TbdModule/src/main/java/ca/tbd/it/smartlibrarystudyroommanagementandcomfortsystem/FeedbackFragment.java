@@ -36,6 +36,7 @@ public class FeedbackFragment extends Fragment {
     private Handler handler = new Handler();
     private static final String PREFS_NAME = "UserPrefs";
     private static final String KEY_USERNAME = "username";
+    private DatabaseReference databaseReference;
 
     public FeedbackFragment() {}
 

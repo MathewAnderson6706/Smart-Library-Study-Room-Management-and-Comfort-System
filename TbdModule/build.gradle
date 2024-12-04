@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
-    id 'com.google.gms.google-services' // Add the Google services Gradle plugin
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -23,6 +23,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -30,42 +31,39 @@ android {
 
     testOptions {
         unitTests {
-            includeAndroidResources = true // Include Android resources for Robolectric
+            includeAndroidResources = true
         }
     }
 }
 
 dependencies {
-    implementation libs.appcompat
-    implementation libs.material
-    implementation libs.activity
-    implementation libs.constraintlayout
-    implementation libs.preference
-    implementation libs.firebase.database
-    testImplementation libs.junit
-    androidTestImplementation libs.ext.junit
-    androidTestImplementation libs.espresso.core
+    // AndroidX and Material libraries
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.activity:activity:1.7.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.preference:preference:1.2.0'
 
-    // Robolectric for Android unit tests
+    // Firebase BoM and Firebase services
+    implementation platform('com.google.firebase:firebase-bom:33.5.1')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-analytics'
+
+    // Google Play Services
+    implementation 'com.google.android.gms:play-services-auth:21.2.0'
+
+
+    // Credentials API
+    implementation "androidx.credentials:credentials:1.2.2"
+    implementation "com.google.android.libraries.identity.googleid:googleid:1.1.1"
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+
+    // Test libraries
     testImplementation 'org.robolectric:robolectric:4.10.3'
-    // AndroidX Test Core for Robolectric support
     testImplementation 'androidx.test:core:1.5.0'
-
-    // For Mockito on Android
-    androidTestImplementation 'org.mockito:mockito-android:5.5.0'
-
-    // For AndroidX Test framework
-    androidTestImplementation 'androidx.test:core:1.5.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-
-    // Firebase BoM
-    implementation platform('com.google.firebase:firebase-bom:33.5.1')
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.android.gms:play-services-auth:21.2.0")
-    implementation("androidx.credentials:credentials:1.2.2")
-    //implementation("androidx.credentials:credentials-services-auth:1.2.2")
-    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
-    implementation 'com.google.firebase:firebase-analytics'
-    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    androidTestImplementation 'org.mockito:mockito-android:5.5.0'
 }

@@ -8,19 +8,29 @@ Section RCB
  */
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class HomeFragment extends Fragment {
 
@@ -62,15 +72,80 @@ public class HomeFragment extends Fragment {
                     .show();
         });
 
+        // Notify user about offline mode if no network
+        if (!isNetworkAvailable(requireContext())) {
+            Snackbar.make(view, "You are offline. Cached data is being used.", Snackbar.LENGTH_LONG).show();
+        }
+
         return view;
     }
 
     private void setupRoom(ImageButton roomButton, String roomId) {
-        RoomUtils.setupRoom(requireContext(), roomButton, roomId, databaseReference, selectedRoomId ->
-                AccessCodeUtils.promptForAccessCode(requireContext(), selectedRoomId, databaseReference, () -> navigateToRoomSettings(selectedRoomId))
-        );
+        if (isNetworkAvailable(requireContext())) {
+            // Fetch data from Firebase
+            databaseReference.child(roomId).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        String roomDetails = snapshot.getValue(String.class);
+                        cacheRoomDetails(roomId, roomDetails); // Cache room data locally
+                        setupRoomUI(roomButton, roomDetails, roomId); // Update UI
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(requireContext(), "Failed to load room data. Using cached data.", Toast.LENGTH_SHORT).show();
+                    useCachedRoomData(roomButton, roomId); // Use cached data if Firebase fails
+                }
+            });
+        } else {
+            // Use cached data when offline
+            useCachedRoomData(roomButton, roomId);
+        }
     }
 
+    private void useCachedRoomData(ImageButton roomButton, String roomId) {
+        String cachedDetails = getCachedRoomDetails(roomId);
+        if (cachedDetails != null) {
+            setupRoomUI(roomButton, cachedDetails, roomId); // Update UI with cached data
+        } else {
+            Toast.makeText(requireContext(), "No cached data available for " + roomId, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void setupRoomUI(ImageButton roomButton, String roomDetails, String roomId) {
+        // Update room button UI
+        roomButton.setContentDescription(roomDetails);
+        roomButton.setOnClickListener(v -> {
+            Toast.makeText(requireContext(), "Accessing " + roomDetails, Toast.LENGTH_SHORT).show();
+            navigateToRoomSettings(roomId);
+        });
+    }
+
+    private void cacheRoomDetails(String roomId, String details) {
+        SharedPreferences prefs = requireContext().getSharedPreferences("room_prefs", Context.MODE_PRIVATE);
+        prefs.edit().putString(roomId, details).apply();
+    }
+
+    private String getCachedRoomDetails(String roomId) {
+        SharedPreferences prefs = requireContext().getSharedPreferences("room_prefs", Context.MODE_PRIVATE);
+        return prefs.getString(roomId, null);
+    }
+
+    private boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null) {
+            Network network = connectivityManager.getActiveNetwork();
+            if (network != null) {
+                NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(network);
+                return capabilities != null &&
+                        (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR));
+            }
+        }
+        return false;
+    }
     private void navigateToRoomSettings(String roomId) {
         RoomSettingsFragment roomSettingsFragment = new RoomSettingsFragment();
 

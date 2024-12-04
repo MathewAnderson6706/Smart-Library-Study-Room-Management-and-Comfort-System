@@ -156,6 +156,7 @@ public class FeedbackFragment extends Fragment {
     }
 
     private boolean validateInput() {
+        // Validate all input fields
         if (!InputValidator.validateName(fullNameInput)) return false;
         if (!InputValidator.validateEmail(emailInput)) return false;
         if (!InputValidator.validatePhone(phoneNumberInput)) return false;

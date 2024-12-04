@@ -26,7 +26,6 @@ public class FeedbackHelper {
         this.rating = rating;
     }
 
-    // Getters and Setters
     public String getFullName() { return fullName; }
     public String getPhoneNumber() { return phoneNumber; }
     public String getEmail() { return email; }

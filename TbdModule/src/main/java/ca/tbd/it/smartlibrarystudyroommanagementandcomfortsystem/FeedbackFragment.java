@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -155,7 +156,6 @@ public class FeedbackFragment extends Fragment {
     }
 
     private boolean validateInput() {
-        // Validate all input fields
         if (!InputValidator.validateName(fullNameInput)) return false;
         if (!InputValidator.validateEmail(emailInput)) return false;
         if (!InputValidator.validatePhone(phoneNumberInput)) return false;
@@ -170,8 +170,8 @@ public class FeedbackFragment extends Fragment {
         new androidx.appcompat.app.AlertDialog.Builder(getContext())
                 .setTitle(title)
                 .setMessage(message)
-                .setPositiveButton("OK", null) // You can add more buttons if needed
-                .setCancelable(false)  // If you want to prevent the dialog from being dismissed by tapping outside
+                .setPositiveButton("OK", null)
+                .setCancelable(false)
                 .show();
     }
 
@@ -189,18 +189,26 @@ public class FeedbackFragment extends Fragment {
 
         FeedbackHelper feedback = new FeedbackHelper(fullName, phoneNumber, email, comment, rating);
 
-        feedbackRef.push().setValue(feedback).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                saveSubmissionTime();
-                disableSubmitButton();
-                startCountdown();
-                showAlertDialog("Success", "Feedback submitted successfully!");
-                clearFields();
-            } else {
-                showAlertDialog("Error", "Failed to submit feedback. Try again!");
-            }
-        });
+        ProgressBar progressBar = getView().findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+
+        new Handler().postDelayed(() -> {
+            feedbackRef.push().setValue(feedback).addOnCompleteListener(task -> {
+                progressBar.setVisibility(View.GONE);
+
+                if (task.isSuccessful()) {
+                    saveSubmissionTime();
+                    disableSubmitButton();
+                    startCountdown();
+                    showAlertDialog("Success", "Feedback submitted successfully!");
+                    clearFields();
+                } else {
+                    showAlertDialog("Error", "Failed to submit feedback. Try again!");
+                }
+            });
+        }, 5000);
     }
+
 
     private void clearFields() {
         fullNameInput.setText("");

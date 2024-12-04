@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         // Initialize Firebase database reference
-        databaseReference = FirebaseDatabase.getInstance().getReference("rooms");
+        databaseReference = FirebaseDatabase.getInstance().getReference("roooms");
 
         // Initialize room buttons
         ImageButton room1a = view.findViewById(R.id.room1a);

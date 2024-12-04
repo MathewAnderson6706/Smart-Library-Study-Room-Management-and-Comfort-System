@@ -28,6 +28,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import utils.NetworkUtils;
+
 
 public class FourthFragment extends Fragment {
 
@@ -67,6 +69,11 @@ public class FourthFragment extends Fragment {
                     .setAnchorView(fab) // Ensure Snack bar is anchored to the FAB
                     .show();
         });
+
+        // Check if the device is offline and show a message
+        if (NetworkUtils.isOffline(requireContext())) {
+            Toast.makeText(requireContext(), "You are offline. Some features may not work.", Toast.LENGTH_LONG).show();
+        }
 
         return view;
     }

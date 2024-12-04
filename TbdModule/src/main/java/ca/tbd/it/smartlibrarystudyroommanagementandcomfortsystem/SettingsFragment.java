@@ -27,6 +27,8 @@ import androidx.fragment.app.Fragment;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.preference.PreferenceFragmentCompat;
 
+import utils.NetworkUtils;
+
 public class SettingsFragment extends Fragment {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
@@ -52,16 +54,6 @@ public class SettingsFragment extends Fragment {
                 Toast.makeText(getActivity(), R.string.location_tracking_disabled, Toast.LENGTH_SHORT).show();
             }
         });
-
-        /*ImageButton tbdcall = view.findViewById(R.id.tbd_call);
-        tbdcall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse(getString(R.string.tel_1234567789)));
-                startActivity(intent);
-            }
-        });*/
 
 
         ImageView exit = view.findViewById(R.id.settings_exit);
@@ -91,6 +83,11 @@ public class SettingsFragment extends Fragment {
                         .commit();
             }
         });
+
+        // Check if the device is offline and show a message
+        if (NetworkUtils.isOffline(requireContext())) {
+            Toast.makeText(requireContext(), "You are offline. Some features may not work.", Toast.LENGTH_LONG).show();
+        }
 
         return view;
 

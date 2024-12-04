@@ -10,22 +10,24 @@ package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
+
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+import utils.NetworkUtils;
+
 
 public class SecondFragment extends Fragment {
 
@@ -54,6 +56,23 @@ public class SecondFragment extends Fragment {
         setupRoom(room2b, "room2b");
         setupRoom(room3b, "room3b");
         setupRoom(room4b, "room4b");
+
+        // Initialize the FloatingActionButton
+        FloatingActionButton fab = view.findViewById(R.id.fab_generate_code);
+
+        // Set a click listener on the FAB
+        fab.setOnClickListener(v -> {
+            // Display a Snack bar message with information about codes
+            Snackbar.make(view, "Green=Vacant, Red=Occupied", Snackbar.LENGTH_LONG)
+                    .setAnchorView(fab) // Ensure Snack bar is anchored to the FAB
+                    .show();
+        });
+
+        // Check if the device is offline and show a message
+        if (NetworkUtils.isOffline(requireContext())) {
+            Toast.makeText(requireContext(), "You are offline. Some features may not work.", Toast.LENGTH_LONG).show();
+        }
+
 
         return view;
     }

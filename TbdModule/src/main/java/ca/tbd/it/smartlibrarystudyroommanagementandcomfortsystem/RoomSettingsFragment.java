@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +33,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import utils.NetworkUtils;
 
 
 public class RoomSettingsFragment extends Fragment {
@@ -139,6 +141,11 @@ public class RoomSettingsFragment extends Fragment {
                 // Do nothing
             }
         });
+
+        // Check if the device is offline and show a message
+        if (NetworkUtils.isOffline(requireContext())) {
+            Toast.makeText(requireContext(), "You are offline. Some features may not work.", Toast.LENGTH_LONG).show();
+        }
 
         return view;
     }

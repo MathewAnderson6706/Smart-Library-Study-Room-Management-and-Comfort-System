@@ -8,23 +8,26 @@ Section RCB
  */
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-
+import utils.NetworkUtils;
 
 public class HomeFragment extends Fragment {
 
     private DatabaseReference databaseReference;
-
 
     public HomeFragment() {
         // Required empty public constructor
@@ -36,8 +39,10 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        // Initialize Firebase database reference
         databaseReference = FirebaseDatabase.getInstance().getReference("roooms");
 
+        // Initialize room buttons
         ImageButton room1a = view.findViewById(R.id.room1a);
         ImageButton room2a = view.findViewById(R.id.room2a);
         ImageButton room3a = view.findViewById(R.id.room3a);
@@ -48,6 +53,22 @@ public class HomeFragment extends Fragment {
         setupRoom(room2a, "room2a");
         setupRoom(room3a, "room3a");
         setupRoom(room4a, "room4a");
+
+        // Initialize the FloatingActionButton
+        FloatingActionButton fab = view.findViewById(R.id.fab_generate_code);
+
+        // Set a click listener on the FAB
+        fab.setOnClickListener(v -> {
+            // Display a Snack bar message with information about codes
+            Snackbar.make(view, "Green=Vacant, Red=Occupied", Snackbar.LENGTH_LONG)
+                    .setAnchorView(fab) // Ensure Snack bar is anchored to the FAB
+                    .show();
+        });
+
+        // Check if the device is offline and show a message
+        if (NetworkUtils.isOffline(requireContext())) {
+            Toast.makeText(requireContext(), "You are offline. Some features may not work.", Toast.LENGTH_LONG).show();
+        }
 
         return view;
     }
@@ -73,3 +94,5 @@ public class HomeFragment extends Fragment {
                 .commit();
     }
 }
+
+

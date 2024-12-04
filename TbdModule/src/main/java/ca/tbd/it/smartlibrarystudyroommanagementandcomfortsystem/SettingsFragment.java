@@ -9,6 +9,7 @@ Section RCB
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.Manifest;
+
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,9 +18,19 @@ import android.view.ViewGroup;
 
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.widget.SwitchCompat;
+
+
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.widget.SwitchCompat;
+
+
+import utils.NetworkUtils;
+
 
 public class SettingsFragment extends Fragment {
 
@@ -43,8 +54,6 @@ public class SettingsFragment extends Fragment {
                 Toast.makeText(getActivity(), R.string.location_tracking_disabled, Toast.LENGTH_SHORT).show();
             }
         });
-
-
 
         ImageView exit = view.findViewById(R.id.settings_exit);
         exit.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +82,11 @@ public class SettingsFragment extends Fragment {
                         .commit();
             }
         });
+
+        // Check if the device is offline and show a message
+        if (NetworkUtils.isOffline(requireContext())) {
+            Toast.makeText(requireContext(), "You are offline. Some features may not work.", Toast.LENGTH_LONG).show();
+        }
 
         return view;
 

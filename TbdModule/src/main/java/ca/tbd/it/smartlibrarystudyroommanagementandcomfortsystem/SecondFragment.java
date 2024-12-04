@@ -21,6 +21,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,6 +56,18 @@ public class SecondFragment extends Fragment {
         setupRoom(room2b, "room2b");
         setupRoom(room3b, "room3b");
         setupRoom(room4b, "room4b");
+
+        // Initialize the FloatingActionButton
+        FloatingActionButton fab = view.findViewById(R.id.fab_generate_code);
+
+        // Set a click listener on the FAB
+        fab.setOnClickListener(v -> {
+            // Display a Snack bar message with information about codes
+            Snackbar.make(view, "This screen requires codes to access rooms.", Snackbar.LENGTH_LONG)
+                    .setAnchorView(fab) // Ensure Snack bar is anchored to the FAB
+                    .show();
+        });
+
 
         return view;
     }

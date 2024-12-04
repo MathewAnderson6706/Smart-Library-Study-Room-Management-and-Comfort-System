@@ -21,6 +21,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,6 +55,7 @@ public class ThirdFragment extends Fragment {
         setupRoom(room2c, "room2c");
         setupRoom(room3c, "room3c");
         setupRoom(room4c, "room4c");
+
 
         return view;
     }

@@ -24,6 +24,14 @@ public class RoomUtils {
                         roomButton.setImageResource(R.drawable.roombooked);
                         roomButton.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary));
                         roomButton.setOnClickListener(v -> listener.onRoomSelected(roomId));
+                    } else {
+                        // Room is vacant: Show notification
+                        roomButton.setEnabled(true);
+                        roomButton.setImageResource(R.drawable.roomvacant);
+                        roomButton.setBackgroundColor(ContextCompat.getColor(context, R.color.darkGreen));
+                        roomButton.setOnClickListener(v ->
+                                Toast.makeText(context, "You must be in a room to enter in a code!", Toast.LENGTH_SHORT).show()
+                        );
                     }
                 } else {
                     Toast.makeText(context, "Room data not found", Toast.LENGTH_SHORT).show();

@@ -56,13 +56,10 @@ public class HomeFragment extends Fragment {
 
         // Set a click listener on the FAB
         fab.setOnClickListener(v -> {
-            // Display a Snackbar message when the FAB is clicked
-            Snackbar.make(view, "You need a code to proceed. Tap the button to generate one!", Snackbar.LENGTH_LONG)
-                    .setAnchorView(fab) // Ensure Snackbar is anchored to the FAB
+            // Display a Snack bar message with information about codes
+            Snackbar.make(view, "This screen requires codes to access rooms.", Snackbar.LENGTH_LONG)
+                    .setAnchorView(fab) // Ensure Snack bar is anchored to the FAB
                     .show();
-
-            // Simulate code generation or trigger a related action
-            generateAccessCode();
         });
 
         return view;
@@ -88,12 +85,6 @@ public class HomeFragment extends Fragment {
                 .addToBackStack(null)
                 .commit();
     }
-
-    private void generateAccessCode() {
-        // Simulate a delay for generating the access code
-        new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(() -> {
-            // Show a Toast message indicating the code generation was successful
-            Snackbar.make(getView(), "Access code generated successfully!", Snackbar.LENGTH_LONG).show();
-        }, 3000); // Delay for 3 seconds
-    }
 }
+
+

@@ -166,6 +166,15 @@ public class FeedbackFragment extends Fragment {
         return true;
     }
 
+    private void showAlertDialog(String title, String message) {
+        new androidx.appcompat.app.AlertDialog.Builder(getContext())
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", null) // You can add more buttons if needed
+                .setCancelable(false)  // If you want to prevent the dialog from being dismissed by tapping outside
+                .show();
+    }
+
     private void submitFeedback() {
         String fullName = fullNameInput.getText().toString().trim();
         String phoneNumber = phoneNumberInput.getText().toString().trim();
@@ -185,10 +194,10 @@ public class FeedbackFragment extends Fragment {
                 saveSubmissionTime();
                 disableSubmitButton();
                 startCountdown();
-                Toast.makeText(getContext(), "Feedback submitted successfully!", Toast.LENGTH_SHORT).show();
+                showAlertDialog("Success", "Feedback submitted successfully!");
                 clearFields();
             } else {
-                Toast.makeText(getContext(), "Failed to submit feedback. Try again!", Toast.LENGTH_SHORT).show();
+                showAlertDialog("Error", "Failed to submit feedback. Try again!");
             }
         });
     }

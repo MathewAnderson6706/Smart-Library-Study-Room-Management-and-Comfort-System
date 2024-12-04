@@ -190,4 +190,5 @@ Section RCB
     <string name="aboutUs">We are committed to providing the best services to our users with an innovative and customer-centric approach. Our mission is to enhance your experience and deliver quality.</string>
     <string name="aboutUs_image">Profile Image</string>
     <string name="info_aboutUs">About Us</string>
+    <string name="actualTime">Time:</string>
 </resources>

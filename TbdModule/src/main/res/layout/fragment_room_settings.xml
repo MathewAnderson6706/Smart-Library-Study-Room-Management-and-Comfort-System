@@ -169,9 +169,14 @@ Section RCB
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/time"
+                android:text="@string/actualTime"
                 android:textColor="@color/black"
                 android:layout_marginTop="0dp"/>
+                <TextClock
+                    android:id="@+id/textClock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -185,18 +190,15 @@ Section RCB
                 android:text="@string/timer"
                 android:textColor="@color/black"
                 android:layout_marginTop="5dp"/>
+                <TextView
+                    android:id="@+id/remaining_time_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="02:00:00"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="25dp"/>
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp">
-            <TextClock
-                android:id="@+id/textClock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"/>
-            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout

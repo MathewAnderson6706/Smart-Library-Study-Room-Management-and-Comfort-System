@@ -7,16 +7,22 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
+import androidx.core.app.NotificationCompat;
+
 import androidx.annotation.Nullable;
 
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +39,9 @@ public class FeedbackFragment extends Fragment {
     private FirebaseDatabase database;
     private DatabaseReference feedbackRef;
     private Handler handler = new Handler();
+    private static final String PREFS_NAME = "UserPrefs";
+    private static final String KEY_USERNAME = "username";
+    private DatabaseReference databaseReference;
 
     public FeedbackFragment() {}
 
@@ -53,6 +62,9 @@ public class FeedbackFragment extends Fragment {
         database = FirebaseDatabase.getInstance();
         feedbackRef = database.getReference("feedback");
 
+        databaseReference = FirebaseDatabase.getInstance().getReference("users");
+
+
         if (!canSubmitFeedback()) {
             disableSubmitButton();
             startCountdown();
@@ -60,7 +72,9 @@ public class FeedbackFragment extends Fragment {
 
         submitButton.setOnClickListener(v -> {
             if (canSubmitFeedback()) {
-                submitFeedback();
+                if (validateInput()) { // Validate the input before submitting
+                    submitFeedback();
+                }
             } else {
                 Toast.makeText(getContext(), "You can only submit feedback once every 24 hours.", Toast.LENGTH_SHORT).show();
             }
@@ -69,18 +83,39 @@ public class FeedbackFragment extends Fragment {
         return view;
     }
 
+    public void sendNotification(Context context) {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "FEEDBACK_CHANNEL")
+                .setSmallIcon(R.drawable.ic_launcher_playstore2)
+                .setContentTitle("Feedback Available")
+                .setContentText("You can submit feedback now!")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true);
+
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        if (notificationManager != null) {
+            notificationManager.notify(1, builder.build());
+        }
+    }
+
     private boolean canSubmitFeedback() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        long lastSubmissionTime = preferences.getLong("last_feedback_time", 0);
+        String username = getLoggedInUsername();
+        long lastSubmissionTime = preferences.getLong(username + "_last_feedback_time", 0); // Use username as the key
         long currentTime = System.currentTimeMillis();
-        return (currentTime - lastSubmissionTime) >= 86400000;
+        return (currentTime - lastSubmissionTime) >= 86400000; // 24 hours in milliseconds
     }
 
     private void saveSubmissionTime() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putLong("last_feedback_time", System.currentTimeMillis());
+        String username = getLoggedInUsername();
+        editor.putLong(username + "_last_feedback_time", System.currentTimeMillis()); // Store the time per user
         editor.apply();
+    }
+
+    private String getLoggedInUsername() {
+        SharedPreferences prefs = requireActivity().getSharedPreferences(PREFS_NAME, requireContext().MODE_PRIVATE);
+        return prefs.getString(KEY_USERNAME, "");
     }
 
     private void disableSubmitButton() {
@@ -97,22 +132,48 @@ public class FeedbackFragment extends Fragment {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-                long lastSubmissionTime = preferences.getLong("last_feedback_time", 0);
-                long remainingTime = 86400000 - (System.currentTimeMillis() - lastSubmissionTime);
+                // Ensure the fragment is attached to an activity before accessing context
+                if (getContext() != null) {
+                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    String username = getLoggedInUsername(); // Fetch logged-in username
+                    long lastSubmissionTime = preferences.getLong(username + "_last_feedback_time", 0); // Use username as the key
+                    long remainingTime = 86400000 - (System.currentTimeMillis() - lastSubmissionTime);
 
-                if (remainingTime > 0) {
-                    long hours = TimeUnit.MILLISECONDS.toHours(remainingTime);
-                    long minutes = TimeUnit.MILLISECONDS.toMinutes(remainingTime) % 60;
-                    long seconds = TimeUnit.MILLISECONDS.toSeconds(remainingTime) % 60;
-                    countdownTimerText.setText(String.format("You can submit feedback in %02d:%02d:%02d", hours, minutes, seconds));
-                    handler.postDelayed(this, 1000);
-                } else {
-                    countdownTimerText.setText("");
-                    enableSubmitButton();
+                    if (remainingTime > 0) {
+                        long hours = TimeUnit.MILLISECONDS.toHours(remainingTime);
+                        long minutes = TimeUnit.MILLISECONDS.toMinutes(remainingTime) % 60;
+                        long seconds = TimeUnit.MILLISECONDS.toSeconds(remainingTime) % 60;
+                        countdownTimerText.setText(String.format("You can submit feedback in %02d:%02d:%02d", hours, minutes, seconds));
+                        handler.postDelayed(this, 1000);
+                    } else {
+                        countdownTimerText.setText("");
+                        enableSubmitButton();
+                        sendNotification(getContext());
+                    }
                 }
             }
         });
+    }
+
+    private boolean validateInput() {
+        // Validate all input fields
+        if (!InputValidator.validateName(fullNameInput)) return false;
+        if (!InputValidator.validateEmail(emailInput)) return false;
+        if (!InputValidator.validatePhone(phoneNumberInput)) return false;
+        if (TextUtils.isEmpty(commentBox.getText())) {
+            commentBox.setError("Comment is required");
+            return false;
+        }
+        return true;
+    }
+
+    private void showAlertDialog(String title, String message) {
+        new androidx.appcompat.app.AlertDialog.Builder(getContext())
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", null)
+                .setCancelable(false)
+                .show();
     }
 
     private void submitFeedback() {
@@ -129,18 +190,26 @@ public class FeedbackFragment extends Fragment {
 
         FeedbackHelper feedback = new FeedbackHelper(fullName, phoneNumber, email, comment, rating);
 
-        feedbackRef.push().setValue(feedback).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                saveSubmissionTime();
-                disableSubmitButton();
-                startCountdown();
-                Toast.makeText(getContext(), "Feedback submitted successfully!", Toast.LENGTH_SHORT).show();
-                clearFields();
-            } else {
-                Toast.makeText(getContext(), "Failed to submit feedback. Try again!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        ProgressBar progressBar = getView().findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+
+        new Handler().postDelayed(() -> {
+            feedbackRef.push().setValue(feedback).addOnCompleteListener(task -> {
+                progressBar.setVisibility(View.GONE);
+
+                if (task.isSuccessful()) {
+                    saveSubmissionTime();
+                    disableSubmitButton();
+                    startCountdown();
+                    showAlertDialog("Success", "Feedback submitted successfully!");
+                    clearFields();
+                } else {
+                    showAlertDialog("Error", "Failed to submit feedback. Try again!");
+                }
+            });
+        }, 5000);
     }
+
 
     private void clearFields() {
         fullNameInput.setText("");

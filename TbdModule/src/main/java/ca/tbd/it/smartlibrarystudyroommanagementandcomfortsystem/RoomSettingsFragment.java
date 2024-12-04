@@ -9,6 +9,7 @@ Section RCB
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +25,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,6 +39,9 @@ public class RoomSettingsFragment extends Fragment {
     private DatabaseReference databaseReference;
     private String roomId;
     private Handler handler = new Handler();
+    private long timerTimeLeft;
+    private CountDownTimer countDownTimer;
+    private TextView remainingTimeTextView;
 
     public RoomSettingsFragment() {
         // Required empty public constructor
@@ -56,6 +61,7 @@ public class RoomSettingsFragment extends Fragment {
         Button setTemperatureButton = view.findViewById(R.id.setTemperatureButton);
         SwitchCompat lightSwitch = view.findViewById(R.id.lightSwitch);
         SeekBar lightDimnessSeekBar = view.findViewById(R.id.lightDimnessSeekBar);
+        remainingTimeTextView = view.findViewById(R.id.remaining_time_textview);
 
         // Retrieve the room ID from the arguments
         if (getArguments() != null) {
@@ -146,10 +152,18 @@ public class RoomSettingsFragment extends Fragment {
                         String roomName = snapshot.child("name").getValue(String.class);
                         String actualTemp = snapshot.child("temperature").child("actual").getValue(String.class);
                         String targetTemp = snapshot.child("temperature").child("target").getValue(String.class);
+                        String status = snapshot.child("status").getValue(String.class);
+                        Long timer = snapshot.child("timer").getValue(Long.class);
 
                         roomNameTextView.setText(roomName != null ? roomName : "Room Name Not Found");
                         actualTempText.setText(actualTemp != null ? "Actual Temperature: " + actualTemp + "°C" : "Actual Temperature Not Found");
                         targetTempText.setText(targetTemp != null ? "Target Temperature: " + targetTemp + "°C" : "Target Temperature Not Found");
+
+                        if (status != null && status.equals("occupied") && timer != null) {
+                            // If the room is occupied, start the countdown
+                            timerTimeLeft = timer * 1000; // Convert seconds to milliseconds
+                            startCountdownTimer();
+                        }
 
                         if (targetTemp != null) {
                             seekBar.setProgress(Integer.parseInt(targetTemp));
@@ -168,6 +182,58 @@ public class RoomSettingsFragment extends Fragment {
                 }
             });
         }
+    }
+
+    private void startCountdownTimer() {
+        // Initialize the countdown timer
+        countDownTimer = new CountDownTimer(timerTimeLeft, 1000) {  // 1 second interval
+            @Override
+            public void onTick(long millisUntilFinished) {
+                // Update the remaining time
+                timerTimeLeft = millisUntilFinished;
+                updateTimerUI();
+                updateFirebaseTimer();
+            }
+
+            @Override
+            public void onFinish() {
+                // When the timer finishes, mark the room as vacant
+                kickUserOut();
+            }
+        };
+
+        countDownTimer.start();
+    }
+
+    private void updateTimerUI() {
+        // Convert the remaining time to hours, minutes, and seconds
+        long hours = timerTimeLeft / 1000 / 3600;
+        long minutes = (timerTimeLeft / 1000 % 3600) / 60;
+        long seconds = timerTimeLeft / 1000 % 60;
+
+        remainingTimeTextView.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
+    }
+
+    private void updateFirebaseTimer() {
+        // Update the room's remaining timer in Firebase
+        databaseReference.child(roomId).child("timer").setValue(timerTimeLeft / 1000);  // Store time in seconds
+    }
+
+    private void kickUserOut() {
+        // Set the room status to "vacant"
+        databaseReference.child(roomId).child("status").setValue("vacant");
+
+        databaseReference.child(roomId).child("timer").setValue(7200);  // 2 hours in seconds
+
+        if (getView() != null) {
+            Snackbar.make(getView(), "Your time is up, please leave the room", Snackbar.LENGTH_LONG).show();
+        }
+
+        // Redirect the user to the HomeFragment
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.tbdFlFragment, new HomeFragment())
+                .commit();
     }
 
     private void adjustActualTemperature(TextView actualTempText, int targetTemp) {
@@ -232,7 +298,7 @@ public class RoomSettingsFragment extends Fragment {
 
                 @Override
                 public void onCancelled(DatabaseError error) {
-                    // Handle error (optional: show error message to the user)
+
                 }
             });
         }

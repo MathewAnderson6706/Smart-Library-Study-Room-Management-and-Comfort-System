@@ -1,8 +1,11 @@
 package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
@@ -11,6 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -53,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.navigation_view);
         toolbar = findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
+        NotificationHelper.createNotificationChannel(this);
 
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);

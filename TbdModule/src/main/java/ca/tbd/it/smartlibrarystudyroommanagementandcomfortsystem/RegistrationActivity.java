@@ -10,8 +10,7 @@ package ca.tbd.it.smartlibrarystudyroommanagementandcomfortsystem;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Patterns;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -78,42 +77,14 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
-    private boolean validateInputs(String name, String email, String password, String confirmPassword, String phone) {
-        // Name validation
-        if (TextUtils.isEmpty(name)) {
-            nameInput.setError("Name is required");
-            return false;
-        }
-
-        // Email validation
-        if (TextUtils.isEmpty(email) || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailInput.setError("Enter a valid email address");
-            return false;
-        }
-
-        // Password validation
-        if (password.length() < 6 || !password.matches(".*[a-zA-Z].*") || !password.matches(".*\\d.*") ||
-                !password.matches(".*[@#$%^&+=!].*") || !password.matches(".*[A-Z].*")) {
-            passwordInput.setError("Password must be at least 6 characters, contain upper case letters, digits, and special characters");
-            return false;
-        }
-
-        // Confirm password validation
-        if (!password.equals(confirmPassword)) {
-            passwordConfirmInput.setError("Passwords do not match");
-            return false;
-        }
-
-        // Phone number validation
-        if (phone.length() != 10 || !phone.matches("\\d{10}")) {
-            phoneInput.setError("Enter a valid 10-digit phone number");
-            return false;
-        }
-
-        return true;
+    public boolean validateInputs(String name, String email, String password, String confirmPassword, String phone) {
+        return InputValidator.validateName(nameInput) &&
+                InputValidator.validateEmail(emailInput) &&
+                InputValidator.validatePassword(passwordInput, passwordConfirmInput) &&
+                InputValidator.validatePhone(phoneInput);
     }
 
-    private void checkEmailExistsAndRegister(String sanitizedEmail, HelperClass helperClass) {
+    public void checkEmailExistsAndRegister(String sanitizedEmail, HelperClass helperClass) {
         reference.child(sanitizedEmail).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -132,7 +103,7 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
-    private void registerUser(String sanitizedEmail, HelperClass helperClass) {
+    public void registerUser(String sanitizedEmail, HelperClass helperClass) {
         reference.child(sanitizedEmail).setValue(helperClass)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(RegistrationActivity.this, R.string.you_have_registered_an_account, Toast.LENGTH_SHORT).show();

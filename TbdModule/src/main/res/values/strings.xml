@@ -191,4 +191,5 @@ Section RCB
     <string name="aboutUs_image">Profile Image</string>
     <string name="info_aboutUs">About Us</string>
     <string name="client_id">932079205234-31a3dvvotifpdtqp1e55aijuld9hv7sl.apps.googleusercontent.com</string>
+    <string name="actualTime">Time:</string>
 </resources>

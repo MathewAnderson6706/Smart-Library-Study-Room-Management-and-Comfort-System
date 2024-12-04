@@ -64,7 +64,7 @@ public class ThirdFragment extends Fragment {
         // Set a click listener on the FAB
         fab.setOnClickListener(v -> {
             // Display a Snack bar message with information about codes
-            Snackbar.make(view, "This screen requires codes to access rooms.", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, "Green=Vacant, Red=Occupied", Snackbar.LENGTH_LONG)
                     .setAnchorView(fab) // Ensure Snack bar is anchored to the FAB
                     .show();
         });

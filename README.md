@@ -112,12 +112,6 @@ Although sensors are currently simulated, the system is designed to support real
  
 ---
 
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
 ## 🙋‍♂️ Contact
 
 For feedback or issues, please open a GitHub Issue or submit a Pull Request. Contributions are welcome!
